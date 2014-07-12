@@ -73,7 +73,7 @@
             print '<tr>';
             foreach ($categories as $c => $words){
                 #Object name = category number
-                echo '<td><div id="' . $c . ',' . $r .'" class="destination" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>';
+                echo '<td><div name="' . $c . ',' . $r .'" id="droppable" class="destination"></div></td>';
             }
             print '</tr>';
         }
@@ -97,7 +97,7 @@
         //Print table rows for choices
         foreach ($mixed_words as $word){
             #print_r($word[0]);
-            echo '<div id="' . $word[1] . ',' . $word[0] . '" class="source" draggable="true" ondragstart="drag(event)">' . $word[0] .'</div>';
+            echo '<div name="' . $word[1] . ',' . $word[0] . '" id="draggable" class="source">' . $word[0] .'</div>';
         }
 
     

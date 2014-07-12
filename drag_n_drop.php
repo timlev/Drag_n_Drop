@@ -8,50 +8,46 @@
             import_lesson($csvfile="Lessons/people_places_things.csv", $delimiter=',');
             echo '<script> var words_remaining=' . $words_remaining . '</script>'
         ?>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/css/lightness/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+
         <script>
+        $(document).ready(function(){
+        $(function() {
+          $( ".source" ).draggable({ revert: "invalid" });
+          $( ".destination" ).droppable({
+            drop: function( event, ui ) {
+              var dragged_category = ui.draggable.attr("name").split(",")[0];
+              var dropped_category = $(this).attr("name").split(",")[0];
+              if (dragged_category == dropped_category){
+                  ui.draggable.draggable("disable");
+                  $(this).css({"background-color":"yellow"});
+                  $(this).text(ui.draggable.text());
+                  ui.draggable.hide();
+                  score += 1;
+                  words_remaining -= 1;
+                  moves += 1;
+                  $("#status").text("Current score: " + score + " Words remaining: " + words_remaining);
+                  if (words_remaining == 0){
+                     document.getElementById("menu_link").innerHTML = "Finished!<br>Current score: " + score + " Words remaining: " + words_remaining + "<br>Moves: " + moves
+                  }
+	          }
+	          else{
+	              ui.draggable.css({"color":"red"});
+	              moves += 1;
+	              
+	          }
+
+            }
+          });
+        });
+        });
+
             var score = 0;
-            
-            function allowDrop(ev) {
-                ev.preventDefault();
-            }
-
-            function drag(ev) {
-                appStatus("Dragging the "+ev.target.getAttribute('id'));
-                ev.dataTransfer.setData("Text", ev.target.id);
-                ev.dataTransfer.dropEffect='move';
-            }
-
-            function drop(ev) {
-                ev.preventDefault();
-                var data = ev.dataTransfer.getData("Text");
-                ev.target.appendChild(document.getElementById(data));
-                var element = ev.dataTransfer.getData("Text");
-                appStatus("Dropped "+element+" into the "+ev.target.getAttribute('id'));
-                if (ev.target.getAttribute('id').split(",")[0] != element.split(",")[0]){
-                    document.getElementById(ev.target.getAttribute('id')).style.color = "red";
-                }
-                else if (ev.target.getAttribute('id').split(",")[0] == element.split(",")[0]){
-                    document.getElementById(ev.target.getAttribute('id')).style.color = "green";
-                    document.getElementById(element).style.color = "green";
-                    document.getElementById(element).removeAttribute("draggable");
-                    document.getElementById(ev.target.getAttribute('id')).removeAttribute("ondrop");
-                    document.getElementById(ev.target.getAttribute('id')).removeAttribute("ondragover");
-                    score += 1;
-                    words_remaining -= 1;
-                    appStatus("Current score: " + score + " Words remaining: " + words_remaining);
-                    if (words_remaining == 0){
-                        document.getElementById("menu_link").innerHTML = "Finished!<br>Current score: " + score + " Words remaining: " + words_remaining
-                    }
-                }
-                else {
-                    document.getElementById(ev.target.getAttribute('id')).style.color = "black";
-                }
-            }
-
-
-            function appStatus(msg){
-                document.getElementById('app_status').innerHTML = msg;
-            }
+            var moves = 0;
         </script>
 
     </head>
@@ -66,7 +62,7 @@
     </table>
     <?= makechoicetable() ?>
     
-    <h3 id="app_status">App status area ready...</h3>
+    <h3 id="status">App status area ready...</h3>
 
 
     </body>
