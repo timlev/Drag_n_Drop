@@ -4,8 +4,7 @@
         print("My table");
     }
     global $categories;
-    #$categories = array("Nouns" => array("Computer", "Dog", "Mouse","Extra"), "Verbs" => array("Run", "Dance", "Sing"), "Adjectives" => array("sleepy","happy", "joyful"));
-    #print_r($categories);
+
     function import_lesson($csvfile='',$delimiter=',')
     {
         //Make sure file exists

@@ -5,7 +5,8 @@
         <title>My Site</title>
         <?php
             require('maketable.php');
-            import_lesson($csvfile="Lessons/people_places_things.csv", $delimiter=',');
+            import_lesson($csvfile=$_GET['lesson'], $delimiter=',');
+            #import_lesson($csvfile="Lessons/people_places_things.csv", $delimiter=',');
             echo '<script> var words_remaining=' . $words_remaining . '</script>'
         ?>
     <link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet">
@@ -63,7 +64,7 @@
     <?= makechoicetable() ?>
     
     <h3 id="status">App status area ready...</h3>
-
+    <center><h2><a href="list_lessons.php">Lesson Menu</a></h2></center>
 
     </body>
 
