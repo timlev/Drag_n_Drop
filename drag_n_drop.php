@@ -5,7 +5,7 @@
         <title>My Site</title>
         <?php
             require('maketable.php');
-            import_lesson($csvfile=$_GET['lesson'], $delimiter=',');
+            import_lesson($csvfile=$_GET['lesson'], '|');
             #import_lesson($csvfile="Lessons/people_places_things.csv", $delimiter=',');
             echo '<script> var words_remaining=' . $words_remaining . '</script>'
         ?>
@@ -16,6 +16,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
 
         <script>
+        
         $(document).ready(function(){
         $(function() {
           $( ".source" ).draggable({ revert: "invalid" });
@@ -26,7 +27,7 @@
               if (dragged_category == dropped_category){
                   ui.draggable.draggable("disable");
                   $(this).css({"background-color":"yellow"});
-                  $(this).text(ui.draggable.text());
+                  $(this).html(ui.draggable.html());
                   ui.draggable.hide();
                   score += 1;
                   words_remaining -= 1;
@@ -45,6 +46,9 @@
             }
           });
         });
+        $("#menu").click(function(){
+            window.location.href="list_lessons.php";
+        })
         });
 
             var score = 0;
@@ -54,6 +58,7 @@
     </head>
     
     <body>
+        
     <div id="menu_link"></div>
     <table>
         <tr>
@@ -64,8 +69,8 @@
     <?= makechoicetable() ?>
     
     <h3 id="status">App status area ready...</h3>
-    <center><h2><a href="list_lessons.php">Lesson Menu</a></h2></center>
-
+    
+<div id="menu"><center><h3><img src="pitr_red_menu_icon_set_4.png" height="50px" width="50px"/><a href="list_lessons.php">Lesson Menu</a></h3></center></div>
     </body>
 
 </html>

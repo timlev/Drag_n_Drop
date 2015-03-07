@@ -1,4 +1,15 @@
 <?php
+echo '<style>h1 {background-color: #abcdef;
+    border: solid black 3pt; 
+    border-radius: 25px;
+    font-size: 2em;
+    text-align: center;
+    font-family:Arial;
+    text-shadow: 0px 1px 1px #fff;
+    //background-image: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#999));
+    max-width: 200px;
+}
+</style>';
 $files = scandir("./Lessons");
 $lessons = [];
 foreach ($files as $file)

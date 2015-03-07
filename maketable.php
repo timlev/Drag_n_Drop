@@ -5,7 +5,7 @@
     }
     global $categories;
 
-    function import_lesson($csvfile='',$delimiter=',')
+    function import_lesson($csvfile='',$del='|')
     {
         //Make sure file exists
         if (!file_exists($csvfile) || !is_readable($csvfile)){
@@ -22,7 +22,7 @@
         $contents = array();
         while(! feof($handle))
          {
-            $row = fgetcsv($handle);
+            $row = fgetcsv($handle, 0, $delimiter=$del);
             if ($row != ""){
                 $contents[] = $row;
             }
