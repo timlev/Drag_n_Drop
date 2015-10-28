@@ -1,0 +1,25 @@
+<html>
+<head>
+<script src="examplelesson.json"></script>
+<script>
+function filltable(lesson){
+  var headerRow = document.getElementById("headerRow");
+  var exampleCat = document.createElement("td");
+  exampleCat.innerHTML = "Cell 1";
+  exampleCat.class = "header";
+  headerRow.appendChild(exampleCat);
+
+  var exampleCat2 = document.createElement("td");
+  exampleCat2.innerHTML = "Cell 2";
+  exampleCat2.class = "header";
+  headerRow.appendChild(exampleCat2);
+}
+</script>
+</head>
+<body onload="filltable()">
+  <table id="tableTemplate">
+    <tr id="headerRow">
+    </tr>
+    <tr id="contentRow1">
+    </tr>
+  </table>
