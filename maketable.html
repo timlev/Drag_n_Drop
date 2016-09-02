@@ -14,9 +14,33 @@ function filltable(lesson){
   exampleCat2.class = "header";
   headerRow.appendChild(exampleCat2);
 }
+function importLesson(lesson){
+    console.log(lesson);
+//    find categories
+    var categories = Object.keys(lesson);
+//find category contents
+    for (item in categories){
+        console.log(categories[item]);
+        console.log(lesson[categories[item]]);
+    }
+}
+function makeBlankTable(){
+//    table to move responses (still needs header)
+//    give names with , split for category (column, row)
+}
+
+function makeChoiceTable(){
+//    table to take answers from
+//    needs to randomize placements
+//    give names with , split for category (correctcolumn, startingrow)
+
+}
+    
+
+
 </script>
 </head>
-<body onload="filltable()">
+<body onload="importLesson(example)">
   <table id="tableTemplate">
     <tr id="headerRow">
     </tr>
