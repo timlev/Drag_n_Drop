@@ -1,0 +1,26 @@
+var lesson = {
+    "in-": [
+        "insane", 
+        "inaccurate", 
+        "informal", 
+        "inhuman"
+    ], 
+    "mis-": [
+        "misfortune", 
+        "misleading", 
+        "misprint", 
+        "misunderstood"
+    ], 
+    "un-": [
+        "undress", 
+        "unfasten", 
+        "unknown"
+    ], 
+    "dis-": [
+        "disease", 
+        "disgrace", 
+        "dishonest", 
+        "disorder", 
+        "distaste"
+    ]
+}

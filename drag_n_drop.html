@@ -16,7 +16,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
-<script src="examplelesson.json"></script>
+<script src="Unit 1 - in, un, dis, mis.json"></script>
 <script>
     function shuffle(a) {
         var j, x, i;
@@ -28,18 +28,7 @@
         }
         return a;
     }   
-function filltable(lesson){
-  var headerRow = document.getElementById("headerRow");
-  var exampleCat = document.createElement("td");
-  exampleCat.innerHTML = "Cell 1";
-  exampleCat.class = "header";
-  headerRow.appendChild(exampleCat);
 
-  var exampleCat2 = document.createElement("td");
-  exampleCat2.innerHTML = "Cell 2";
-  exampleCat2.class = "header";
-  headerRow.appendChild(exampleCat2);
-}
 function importLesson(lesson){
     console.log(lesson);
 //    find categories
@@ -86,7 +75,16 @@ function makeBlankTable(lesson){
     makeChoiceTable(lesson);
 
 }
-
+function tapHandler(event){
+    var audioId = event.target.id + "_audio";
+    console.log(audioId);
+    document.getElementById(audioId).play();
+}
+    
+function setAudioSource(word){
+    var audioId = word + "_audio";
+    
+}
 function makeChoiceTable(lesson){
 //    table to take answers from
     var sourcesTable = document.createElement('table');
@@ -100,13 +98,19 @@ function makeChoiceTable(lesson){
             var newDiv = document.createElement('div');
             newDiv.setAttribute("name", category.toString() + "," + item.toString());
             newDiv.innerHTML = lesson[headerContents[category]][item];
-            newDiv.setAttribute("id","draggable");
+            newDiv.setAttribute("id",lesson[headerContents[category]][item]);
             newDiv.setAttribute("class", "source");
             newDiv.style.padding = "20px";
+            var newAudio = document.createElement('audio');
+            newAudio.setAttribute("name", category.toString() + "," + item.toString());
+            newAudio.setAttribute("id", lesson[headerContents[category]][item] + "_audio");
+            newDiv.appendChild(newAudio);
+            console.log(newAudio);
 //            mixedWords.push(lesson[headerContents[category]][item]);
             mixedWords.push(newDiv);
         }
     }
+    
     //    needs to randomize placements
     mixedWords = shuffle(mixedWords);
 //    console.log(mixedWords);
@@ -123,7 +127,9 @@ function makeChoiceTable(lesson){
         
         $(document).ready(function(){
         $(function() {
-            makeBlankTable(example);
+            makeBlankTable(lesson);
+            $(".source").bind("tap", tapHandler );
+            $(".source").bind("click", tapHandler );
           $( ".source" ).draggable({ revert: "invalid" });
           $( ".destination" ).droppable({
             drop: function( event, ui ) {
