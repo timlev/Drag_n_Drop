@@ -1,4 +1,11 @@
-var example = {
+var oldexample = {
   "nouns" : ["cat","dog","girl","boy","person","school"],
   "verbs" : ["sleep","run","smile","move","works","tries"]
+};
+
+
+var example = {
+  "un" : ["unhappy","untested","unrequited"],
+  "in" : ["inhumane","indecent","inappropriate","incredible","indelicate"],
+    "dis": ["disappear", "disloyal"]
 };

@@ -16,11 +16,111 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+<script src="examplelesson.json"></script>
+<script>
+    function shuffle(a) {
+        var j, x, i;
+        for (i = a.length; i; i--) {
+            j = Math.floor(Math.random() * i);
+            x = a[i - 1];
+            a[i - 1] = a[j];
+            a[j] = x;
+        }
+        return a;
+    }   
+function filltable(lesson){
+  var headerRow = document.getElementById("headerRow");
+  var exampleCat = document.createElement("td");
+  exampleCat.innerHTML = "Cell 1";
+  exampleCat.class = "header";
+  headerRow.appendChild(exampleCat);
 
+  var exampleCat2 = document.createElement("td");
+  exampleCat2.innerHTML = "Cell 2";
+  exampleCat2.class = "header";
+  headerRow.appendChild(exampleCat2);
+}
+function importLesson(lesson){
+    console.log(lesson);
+//    find categories
+    var categories = Object.keys(lesson);
+//find category contents
+    for (item in categories){
+        console.log(categories[item]);
+        console.log(lesson[categories[item]]);
+    }
+}
+function makeBlankTable(lesson){
+//    table to move responses (still needs header)
+    var headerContents = Object.keys(lesson);
+    var tableObject = document.createElement('table');
+    var headerRow = tableObject.insertRow(0);
+    for (item in headerContents){
+        var cell = headerRow.insertCell(item);
+        headerRow.setAttribute("id","header");
+        cell.innerHTML = headerContents[item];
+        cell.setAttribute("name", item.toString() + "," + "0");
+    }
+//    get longest columns
+    var columnLengths = [];
+    for (columnIndex in headerContents){
+        columnLengths.push(headerContents[columnIndex].length);
+    }
+    var maxLength = Math.max.apply(null,columnLengths);
+//    create destination rows
+    //    give names with , split for category (column, row)
+
+    for (var i=1; i < maxLength + 3; i++){
+        var row = tableObject.insertRow(i);
+        for (columnIndex in headerContents){
+            var cell = row.insertCell(columnIndex);
+            cell.setAttribute("name", columnIndex.toString() + "," + i.toString());
+            cell.setAttribute("class", "destination");
+            cell.setAttribute("id", "droppable");
+        }
+    }
+    document.getElementById("tableContainer").appendChild(tableObject);
+    makeChoiceTable(lesson);
+
+}
+
+function makeChoiceTable(lesson){
+//    table to take answers from
+    var sourcesTable = document.createElement('table');
+    sourcesTable.setAttribute("id","sourcetable");
+//    sourcesTable.style.display = "flex";
+//    sourcesTable.style.flex-wrap = "wrap";
+    var headerContents = Object.keys(lesson);
+    var mixedWords = [];
+    for (category in headerContents){
+        for (item in lesson[headerContents[category]]){
+            var newDiv = document.createElement('div');
+            newDiv.setAttribute("name", category.toString() + "," + item.toString());
+            newDiv.innerHTML = lesson[headerContents[category]][item];
+            newDiv.setAttribute("id","draggable");
+            newDiv.setAttribute("class", "source");
+            newDiv.style.padding = "20px";
+//            mixedWords.push(lesson[headerContents[category]][item]);
+            mixedWords.push(newDiv);
+        }
+    }
+    //    needs to randomize placements
+    mixedWords = shuffle(mixedWords);
+//    console.log(mixedWords);
+    for (index in mixedWords){
+        sourcesTable.appendChild(mixedWords[index]);
+    }
+
+//    give names with , split for category (correctcolumn, startingrow)
+        document.getElementById("tableContainer").appendChild(sourcesTable);
+    
+}
+        </script>
         <script>
         
         $(document).ready(function(){
         $(function() {
+            makeBlankTable(example);
           $( ".source" ).draggable({ revert: "invalid" });
           $( ".destination" ).droppable({
             drop: function( event, ui ) {
@@ -49,7 +149,7 @@
           });
         });
         $("#menu").click(function(){
-            window.location.href="list_lessons.php";
+            window.location.href="drag_n_drop.html";
         })
         });
 
@@ -62,17 +162,10 @@
     <body>
         
     <div id="menu_link"></div>
-    <table>
-        <tr>
-<!--            <?= makeheaderbox() ?>-->
-        </tr>
-<!--        <?= makeblanktable() ?>-->
-    </table>
-<!--    <?= makechoicetable() ?>-->
+    <div id="tableContainer"></div>
+<!--    <h3 id="status">App status area ready...</h3>-->
     
-    <h3 id="status">App status area ready...</h3>
-    
-<div id="menu"><center><h3><img src="pitr_red_menu_icon_set_4.png" height="50px" width="50px"/><a href="list_lessons.php">Lesson Menu</a></h3></center></div>
+<div id="menu"><center><h3><img src="pitr_red_menu_icon_set_4.png" height="50px" width="50px"/><a href="drag_n_drop.html">Lesson Menu</a></h3></center></div>
     </body>
 
 </html>

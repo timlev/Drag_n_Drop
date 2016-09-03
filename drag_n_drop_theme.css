@@ -30,7 +30,10 @@ table
     text-align: center;
     font-family:Arial;
 }
-
+#sourcetable {
+    display: flex;
+    flex-wrap: wrap;
+}
 .source {
     font-size: 1.5em;
     text-align: center;
