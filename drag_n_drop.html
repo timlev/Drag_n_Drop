@@ -64,13 +64,16 @@ function makeBlankTable(lesson){
 //    get longest columns
     var columnLengths = [];
     for (columnIndex in headerContents){
-        columnLengths.push(headerContents[columnIndex].length);
+        columnLengths.push(lesson[headerContents[columnIndex]].length);
+        console.log(lesson[headerContents[columnIndex]]);
     }
     var maxLength = Math.max.apply(null,columnLengths);
+    console.log(columnLengths);
+    console.log(maxLength);
 //    create destination rows
     //    give names with , split for category (column, row)
 
-    for (var i=1; i < maxLength + 3; i++){
+    for (var i=1; i < maxLength + 1; i++){
         var row = tableObject.insertRow(i);
         for (columnIndex in headerContents){
             var cell = row.insertCell(columnIndex);
