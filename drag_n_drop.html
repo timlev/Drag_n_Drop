@@ -129,7 +129,7 @@ function makeChoiceTable(lesson){
 //            $(".source").bind("tap", tapHandler );
             $(".source").bind("click", tapHandler );
             $(".source").bind("taphold", tapHandler );
-          $( ".source" ).draggable({ revert: "invalid" });
+          $( ".source" ).draggable({ revert: "invalid", scroll: false});
           $( ".destination" ).droppable({
             drop: function( event, ui ) {
               var dragged_category = ui.draggable.attr("name").split(",")[0];
