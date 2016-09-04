@@ -111,6 +111,7 @@ function makeChoiceTable(lesson){
     
     //    needs to randomize placements
     mixedWords = shuffle(mixedWords);
+	words_remaining = mixedWords.length;
 //    console.log(mixedWords);
     for (index in mixedWords){
         sourcesTable.appendChild(mixedWords[index]);
@@ -125,6 +126,8 @@ function makeChoiceTable(lesson){
         
         $(document).ready(function(){
         $(function() {
+		    var score = 0;
+			var words_remaining = 0;
             makeBlankTable(lesson);
 //            $(".source").bind("tap", tapHandler );
             //$(".source").bind("click", tapHandler );
@@ -141,6 +144,7 @@ function makeChoiceTable(lesson){
                   $(this).html(ui.draggable.html());
                   ui.draggable.hide();
                   score += 1;
+				  ui.dropable.dropable("disable");
                   words_remaining -= 1;
                   moves += 1;
                   $("#status").text("Current score: " + score + " Words remaining: " + words_remaining);
@@ -172,7 +176,7 @@ function makeChoiceTable(lesson){
         
     <div id="menu_link"></div>
     <div id="tableContainer"></div>
-<!--    <h3 id="status">App status area ready...</h3>-->
+    <h3 id="status">App status area ready...</h3>
     
 <div id="menu"><center><h3><img src="pitr_red_menu_icon_set_4.png" height="50px" width="50px"/><a href="drag_n_drop.html">Lesson Menu</a></h3></center></div>
     </body>
