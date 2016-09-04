@@ -145,7 +145,7 @@ function makeChoiceTable(lesson){
                   ui.draggable.hide();
 				  //$(this).toggleClass("source");
                   score += 1;
-				  $(this).droppable({"option", "disabled", true});
+				  $(this).droppable({disabled: true});
                   words_remaining -= 1;
                   moves += 1;
                   $("#status").text("Current score: " + score + " Words remaining: " + words_remaining);
