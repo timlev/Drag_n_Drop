@@ -80,6 +80,7 @@ function tapHandler(event){
     console.log(audioId);
     document.getElementById(audioId).play();
 }
+
     
 function makeChoiceTable(lesson){
 //    table to take answers from
@@ -125,8 +126,9 @@ function makeChoiceTable(lesson){
         $(document).ready(function(){
         $(function() {
             makeBlankTable(lesson);
-            $(".source").bind("tap", tapHandler );
+//            $(".source").bind("tap", tapHandler );
             $(".source").bind("click", tapHandler );
+            $(".source").bind("taphold", tapHandler );
           $( ".source" ).draggable({ revert: "invalid" });
           $( ".destination" ).droppable({
             drop: function( event, ui ) {
