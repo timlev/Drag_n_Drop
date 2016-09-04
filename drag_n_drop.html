@@ -144,7 +144,7 @@ function makeChoiceTable(lesson){
                   $(this).html(ui.draggable.html());
                   ui.draggable.hide();
                   score += 1;
-				  this.droppable.droppable("disable");
+				  $(this).droppable.droppable("disable");
                   words_remaining -= 1;
                   moves += 1;
                   $("#status").text("Current score: " + score + " Words remaining: " + words_remaining);
@@ -176,7 +176,7 @@ function makeChoiceTable(lesson){
         
     <div id="menu_link"></div>
     <div id="tableContainer"></div>
-    <h3 id="status">App status area ready...</h3>
+    <h3 id="status"></h3>
     
 <div id="menu"><center><h3><img src="pitr_red_menu_icon_set_4.png" height="50px" width="50px"/><a href="drag_n_drop.html">Lesson Menu</a></h3></center></div>
     </body>
