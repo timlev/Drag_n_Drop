@@ -1,5 +1,7 @@
 import os, glob, urllib
+import download_dict_sound
 
+unable_to_download = []
 
 def dictionary_rough_search(word, directory="./sounds/"):
     #if check_downloaded_word(word, directory):
@@ -20,8 +22,10 @@ def dictionary_rough_search(word, directory="./sounds/"):
     # print "Found alternate source at", query2
     mp3source = ""
     for line in response:
-        if "sound audio_play_button pron-icon us" in line and ".mp3" in line:
-            # print line
+        #print line
+        if 'title="' + word + ':' in line and ".mp3" in line and "American" in line:
+        #if "sound audio_play_button pron-icon us" in line and ".mp3" in line:
+            print line
             start = line.find("data-src-mp3=") + len("data-src-mp3=") + 1
             end = line.find(".mp3") + len(".mp3")
             mp3source = line[start:end]
@@ -36,6 +40,7 @@ def dictionary_rough_search(word, directory="./sounds/"):
         ofp.close()
     except:
         print "Could not download:", word
+        unable_to_download.append(word)
 
 def download(word, directory="./"):
     if check_downloaded_word(word, directory):

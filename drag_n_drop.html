@@ -81,10 +81,6 @@ function tapHandler(event){
     document.getElementById(audioId).play();
 }
     
-function setAudioSource(word){
-    var audioId = word + "_audio";
-    
-}
 function makeChoiceTable(lesson){
 //    table to take answers from
     var sourcesTable = document.createElement('table');
@@ -95,18 +91,19 @@ function makeChoiceTable(lesson){
     var mixedWords = [];
     for (category in headerContents){
         for (item in lesson[headerContents[category]]){
+            var word = lesson[headerContents[category]][item];
             var newDiv = document.createElement('div');
             newDiv.setAttribute("name", category.toString() + "," + item.toString());
-            newDiv.innerHTML = lesson[headerContents[category]][item];
-            newDiv.setAttribute("id",lesson[headerContents[category]][item]);
+            newDiv.innerHTML = word;
+            newDiv.setAttribute("id",word);
             newDiv.setAttribute("class", "source");
             newDiv.style.padding = "20px";
             var newAudio = document.createElement('audio');
             newAudio.setAttribute("name", category.toString() + "," + item.toString());
-            newAudio.setAttribute("id", lesson[headerContents[category]][item] + "_audio");
+            newAudio.setAttribute("id", word + "_audio");
+            newAudio.setAttribute("src", "./sounds/" + word + ".mp3");
             newDiv.appendChild(newAudio);
             console.log(newAudio);
-//            mixedWords.push(lesson[headerContents[category]][item]);
             mixedWords.push(newDiv);
         }
     }

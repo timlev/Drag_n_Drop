@@ -2,7 +2,7 @@ import os, csv, sys, json
 filename = "Unit 1 - in, un, dis, mis.csv"
 
 
-os.chdir("/storage/emulated/0/AppProjects/Drag_n_Drop/")
+#os.chdir("/storage/emulated/0/AppProjects/Drag_n_Drop/")
 
 def grab_csv(csvfilename):
     json_dict = {}
@@ -34,6 +34,7 @@ def write_json(csvfilename, json_dict):
 
 def get_sounds(json_dict):
     import download_dict_sound_rough as down
+    import download_dict_sound
     cwl = []
     for k in json_dict.keys():
         cwl += json_dict[k]
@@ -42,5 +43,5 @@ def get_sounds(json_dict):
     print nd
     for w in nd:
         down.dictionary_rough_search(w)
-       
+    print down.unable_to_download
 get_sounds(grab_csv(filename))
