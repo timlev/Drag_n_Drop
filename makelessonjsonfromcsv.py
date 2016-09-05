@@ -22,16 +22,12 @@ def grab_csv(csvfilename):
 def write_json(csvfilename, json_dict):
     json_filename = csvfilename.replace(".csv",".json")
     with open(json_filename, "w") as fp:
+        fp.write("var lessonname = " + csvfilename)
         fp.write("var lesson = ")
         json.dump(json_dict, fp, indent=4)
     
     
     
-#write_json(filename, grab_csv(filename))
-
-
-
-
 def get_sounds(json_dict):
     import download_dict_sound_rough as down
     import download_dict_sound
@@ -44,4 +40,6 @@ def get_sounds(json_dict):
     for w in nd:
         down.dictionary_rough_search(w)
     print down.unable_to_download
+
+write_json(filename, grab_csv(filename))
 get_sounds(grab_csv(filename))

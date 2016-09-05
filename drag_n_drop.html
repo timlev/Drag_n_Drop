@@ -22,22 +22,11 @@
         return a;
     }   
 
-function importLesson(lesson){
-    console.log(lesson);
-//    find categories
-    var categories = Object.keys(lesson);
-//find category contents
-    for (item in categories){
-        console.log(categories[item]);
-        console.log(lesson[categories[item]]);
-    }
-    console.log(lesson);
-    console.log("****************");
-    document.title = lesson;
-}
+
 function makeBlankTable(lesson){
 //    table to move responses (still needs header)
     var headerContents = Object.keys(lesson);
+    document.title = lessonfilename;
     var tableObject = document.createElement('table');
     var headerRow = tableObject.insertRow(0);
     for (item in headerContents){
