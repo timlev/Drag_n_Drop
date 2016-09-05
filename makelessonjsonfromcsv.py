@@ -22,7 +22,7 @@ def grab_csv(csvfilename):
 def write_json(csvfilename, json_dict):
     json_filename = csvfilename.replace(".csv",".json")
     with open(json_filename, "w") as fp:
-        fp.write("var lessonname = " + csvfilename)
+        fp.write("var lessonname = '" + csvfilename.replace(".csv","") + "'")
         fp.write("var lesson = ")
         json.dump(json_dict, fp, indent=4)
     
