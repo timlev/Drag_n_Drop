@@ -31,7 +31,7 @@ function importLesson(lesson){
         console.log(categories[item]);
         console.log(lesson[categories[item]]);
     }
-    document.title = filename;
+    document.title = lesson;
 }
 function makeBlankTable(lesson){
 //    table to move responses (still needs header)
@@ -168,7 +168,7 @@ function makeChoiceTable(lesson){
     </head>
     
     <body>
-    <div id="lessonchooser" style="{display:none}">
+    <div id="lessonchooser" style="display:none">
         <table>
         <th>3rd grade</th><th>4th grade</th><th>5th grade</th>
         <tr><td></td><td></td><td></td></tr>
