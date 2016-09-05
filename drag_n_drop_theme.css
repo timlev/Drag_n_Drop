@@ -16,7 +16,13 @@ table
     border-spacing: 3px;
 }
 
-
+#lessonchooser table td{
+    text-align:center;
+    border:1px black solid;
+}
+th {
+    background-color: blue;
+}
 
 #header {
     background-color: #abcdef;
