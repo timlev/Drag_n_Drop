@@ -26,7 +26,7 @@
 function makeBlankTable(lesson){
 //    table to move responses (still needs header)
     var headerContents = Object.keys(lesson);
-    document.title = lessonfilename;
+    document.title = lessonname;
     var tableObject = document.createElement('table');
     var headerRow = tableObject.insertRow(0);
     for (item in headerContents){
