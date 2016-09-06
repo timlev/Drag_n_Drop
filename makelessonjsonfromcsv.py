@@ -1,5 +1,4 @@
 import os, csv, sys, json
-filename = "Unit 1 - in, un, dis, mis.csv"
 
 
 #os.chdir("/storage/emulated/0/AppProjects/Drag_n_Drop/")
@@ -25,8 +24,19 @@ def write_json(csvfilename, json_dict):
         fp.write("var lessonname = '" + csvfilename.replace(".csv","") + "';")
         fp.write("var lesson = ")
         json.dump(json_dict, fp, indent=4)
-    
-    
+    return json_filename
+
+def write_html(json_filename):
+    html_filename = json_filename.replace(".json", ".html")
+    #Open orignial drag_n_drop.html
+    html_contents = ""
+    with open("drag_n_drop.html", "r") as fp:
+        html_contents += fp.read()
+    #Point to json file in same folder
+    json_link = json_filename.split("/")[1]
+    html_contents = html_contents.replace("examplelesson.json", json_link)
+    with open(html_filename, "w") as fp:
+        fp.write(html_contents)
     
 def get_sounds(json_dict):
     import download_dict_sound_rough as down
@@ -34,12 +44,14 @@ def get_sounds(json_dict):
     cwl = []
     for k in json_dict.keys():
         cwl += json_dict[k]
-    print cwl
+    # print cwl
     nd = [w for w in cwl if w not in [f.replace(".mp3",'') for f in os.listdir("sounds")]]
-    print nd
+    # print nd
     for w in nd:
         down.dictionary_rough_search(w)
     print down.unable_to_download
 
-write_json(filename, grab_csv(filename))
-get_sounds(grab_csv(filename))
+if __name__ == '__main__':
+    filename = "Unit 1 - in, un, dis, mis.csv"
+    write_json(filename, grab_csv(filename))
+    get_sounds(grab_csv(filename))
