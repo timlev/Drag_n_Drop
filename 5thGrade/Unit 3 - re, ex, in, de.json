@@ -1,0 +1,18 @@
+var lessonname = '5thGrade/Unit 3 - re, ex, in, de';var lesson = {
+    " de-": [
+        "detract", 
+        "decrease"
+    ], 
+    " ex-": [
+        "extinct", 
+        "exterior"
+    ], 
+    " in-": [
+        "interior", 
+        "inhale"
+    ], 
+    "re-": [
+        "reconsider", 
+        "research"
+    ]
+}

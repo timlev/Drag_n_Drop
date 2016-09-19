@@ -1,0 +1,18 @@
+var lessonname = '5thGrade/Unit 2 - pre, fore, post, after';var lesson = {
+    "pre-": [
+        "predetermine", 
+        "precede"
+    ], 
+    " post-": [
+        "posttest", 
+        "postseason"
+    ], 
+    " after-": [
+        "afterward", 
+        "afterthought"
+    ], 
+    " fore-": [
+        "forefathers", 
+        "forethought"
+    ]
+}
