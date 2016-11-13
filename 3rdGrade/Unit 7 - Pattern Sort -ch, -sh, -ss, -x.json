@@ -1,0 +1,26 @@
+var lessonname = '3rdGrade/Unit 7 - Pattern Sort -ch, -sh, -ss, -x';var lesson = {
+    "-ch": [
+        "ditches", 
+        "peaches", 
+        "churches", 
+        "sketches"
+    ], 
+    "-ss": [
+        "glasses", 
+        "kisses", 
+        "guesses", 
+        "dresses"
+    ], 
+    "-x": [
+        "taxes", 
+        "boxes", 
+        "saxes"
+    ], 
+    "-sh": [
+        "dishes", 
+        "ashes", 
+        "brushes", 
+        "leashes", 
+        "wishes"
+    ]
+}

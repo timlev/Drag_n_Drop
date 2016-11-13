@@ -23,7 +23,8 @@ def dictionary_rough_search(word, directory="./sounds/"):
     mp3source = ""
     for line in response:
         #print line
-        if 'title="' + word + ':' in line and ".mp3" in line and "American" in line:
+        if ".mp3" in line and "American" in line:
+        #if 'title="' + word + ':' in line and ".mp3" in line and "American" in line:
         #if "sound audio_play_button pron-icon us" in line and ".mp3" in line:
             print line
             start = line.find("data-src-mp3=") + len("data-src-mp3=") + 1

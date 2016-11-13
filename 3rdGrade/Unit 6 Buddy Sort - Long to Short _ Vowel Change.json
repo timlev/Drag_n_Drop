@@ -1,0 +1,14 @@
+var lessonname = '3rdGrade/Unit 6 Buddy Sort - Long to Short _ Vowel Change';var lesson = {
+    "Vowel Change": [
+        "know knew", 
+        "drive drove", 
+        "blow blew", 
+        "fall fell", 
+        "shine shone", 
+        "ride rode"
+    ], 
+    "Long to Short": [
+        "lead led", 
+        "sweep swept"
+    ]
+}

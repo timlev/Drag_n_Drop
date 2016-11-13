@@ -1,0 +1,12 @@
+var lessonname = '3rdGrade/Unit 7 Teacher-Directed Sort Adding Plural Endings -es, -ies';var lesson = {
+    "-ies": [
+        "stories"
+    ], 
+    "-s": [
+        "pages", 
+        "days"
+    ], 
+    "-es": [
+        "bushes"
+    ]
+}

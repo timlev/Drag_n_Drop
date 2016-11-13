@@ -1,0 +1,14 @@
+var lessonname = '3rdGrade/Unit 6 Student - Long to Short _ Vowel Change';var lesson = {
+    "Vowel Changes": [
+        "think thought", 
+        "write wrote", 
+        "speak spoke", 
+        "find found", 
+        "catch caught", 
+        "break broke"
+    ], 
+    "Long to Short": [
+        "keep kept", 
+        "feed fed"
+    ]
+}

@@ -13,14 +13,12 @@ def check_downloaded_word(word, directory="./"):
 
 def download(word, directory="./"):
     if check_downloaded_word(word, directory):
-        return
+        return 0
     base = "http://dictionary.cambridge.org/us/dictionary/american-english/"
     qmid = "?q="
     #end = "#"
     end = ""
     query = base + word + qmid + word + end
-    print query
-
     try:
         response = urllib2.urlopen(query)
     except:
@@ -42,8 +40,10 @@ def download(word, directory="./"):
         ofp = open(os.path.join(directory, word + ".mp3"),'wb')
         ofp.write(getmp3.read())
         ofp.close()
+        return 0
     except:
         print "Could not download:", word
+        return 2
 
 def replace_symbols(word):
     replacementsdict = {'.exclamationmark': '!', '.apostrophe': "'", '.questionmark': '?', '.comma': ',', '.colon': ':'}
@@ -65,10 +65,7 @@ def remove_symbols_lower(word):
     ind_word = ind_word.lower() #lowercase
     return ind_word
 
-#This is depricated
 def download_google(word, orig_directory="./"):
-    print "download_google is depricated"
-    return 1
     replacementsdict = {'.exclamationmark': '!', '.apostrophe': "'", '.questionmark': '?', '.comma': ',', '.colon': ':'}
     file_form_word = place_symbols(word)
     search_form_word = replace_symbols(word)
@@ -100,25 +97,14 @@ def convert_mp3_to_wav(mp3file, remove_mp3 = False):
         os.remove(mp3path)
     return wavpath
 
-def get_macsay(word, orig_directory="./"):
-    file_form_word = place_symbols(word)
-    search_form_word = replace_symbols(word)
-    outputdir = os.path.abspath(orig_directory.replace("pics","sounds"))
-    os.system('say -o "' + os.path.join(outputdir,file_form_word + "speech_google.wav") +'" -f BEI16@44100 "' + word + '"')
-    return os.path.join(outputdir,file_form_word + "speech_google.wav")
+def get_macsay(word_display, word):
+	os.system('say -o "' + os.path.join(tempfile.gettempdir(),word + "speech_google.WAVE") +'" -f BEI16@44100 "' + word_display + '"')
+	return os.path.join(tempfile.gettempdir(),word + "speech_google.WAVE")
 #problematic examples
 #don't
 #walked
 #Minnesota
 #This
-
-def download_pico(word, orig_directory = "./"):
-    file_form_word = place_symbols(word)
-    search_form_word = replace_symbols(word)
-    outputdir = os.path.abspath(orig_directory.replace("pics","sounds"))
-
-    os.system('pico2wave -w "' + os.path.join(outputdir, file_form_word) + 'speech_google.wav" "' + search_form_word + '"')
-    return os.path.join(outputdir, file_form_word + 'speech_google.wav')
 
 if __name__ == "__main__":
     import pygame

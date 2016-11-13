@@ -1,0 +1,24 @@
+var lessonname = '3rdGrade/Unit 7 Pattern Sort Adding Plural Endings -es, -ies';var lesson = {
+    "-ies": [
+        "stories", 
+        "babies", 
+        "families"
+    ], 
+    "-s": [
+        "pages", 
+        "faces", 
+        "changes", 
+        "boys", 
+        "voices", 
+        "days"
+    ], 
+    "-es": [
+        "bushes", 
+        "lunches", 
+        "classes", 
+        "benches", 
+        "foxes", 
+        "passes", 
+        "crashes"
+    ]
+}
