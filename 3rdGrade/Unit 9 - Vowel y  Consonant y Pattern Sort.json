@@ -1,0 +1,22 @@
+var lessonname = '3rdGrade/Unit 9 - Vowel y  Consonant y Pattern Sort';var lesson = {
+    "Consonant + -y": [
+        "applied", 
+        "carrying", 
+        "copied", 
+        "emptying", 
+        "envying", 
+        "hurries", 
+        "tallies", 
+        "scurried", 
+        "varies"
+    ], 
+    "Vowel + -y": [
+        "betrays", 
+        "conveyed", 
+        "destroyed", 
+        "obeys", 
+        "overstayed", 
+        "repaying", 
+        "replayed"
+    ]
+}

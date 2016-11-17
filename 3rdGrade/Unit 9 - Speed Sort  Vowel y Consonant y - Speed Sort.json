@@ -1,0 +1,22 @@
+var lessonname = '3rdGrade/Unit 9 - Speed Sort  Vowel y Consonant y - Speed Sort';var lesson = {
+    "Consonant + -y": [
+        "accompanies", 
+        "classified", 
+        "denying", 
+        "identifies", 
+        "justified", 
+        "multiplying", 
+        "specified", 
+        "marries", 
+        "steadied", 
+        "occupied", 
+        "terrified"
+    ], 
+    "Vowel + -y": [
+        "annoyed", 
+        "betrayed", 
+        "repays", 
+        "displaying", 
+        "employed"
+    ]
+}

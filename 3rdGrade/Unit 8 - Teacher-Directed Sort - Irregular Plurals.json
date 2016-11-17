@@ -1,0 +1,24 @@
+var lessonname = '3rdGrade/Unit 8 - Teacher-Directed Sort - Irregular Plurals';var lesson = {
+    "fe or f > ves": [
+        "leaf", 
+        "leaves", 
+        "half", 
+        "halves", 
+        "life", 
+        "lives", 
+        "self", 
+        "selves", 
+        "knife", 
+        "knives"
+    ], 
+    "No Change": [
+        "moose", 
+        "deer"
+    ], 
+    "Letter Changes": [
+        "man", 
+        "men", 
+        "tooth", 
+        "teeth"
+    ]
+}

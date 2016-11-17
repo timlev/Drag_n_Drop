@@ -1,0 +1,22 @@
+var lessonname = '3rdGrade/Unit 8 - Singular and Plural';var lesson = {
+    "Plural": [
+        "feet", 
+        "hooves", 
+        "loaves", 
+        "mice", 
+        "scarves", 
+        "shelves", 
+        "wolves", 
+        "women"
+    ], 
+    "Singular": [
+        "foot", 
+        "hoof", 
+        "loaf", 
+        "mouse", 
+        "scarf", 
+        "shelf", 
+        "wolf", 
+        "woman"
+    ]
+}

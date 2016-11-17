@@ -1,0 +1,24 @@
+var lessonname = '3rdGrade/Unit 8 - Independent Sort - fe or f to ves Letter Changes No Change';var lesson = {
+    "fe or f > ves": [
+        "calves", 
+        "thieves", 
+        "wives", 
+        "elves", 
+        "ourselves"
+    ], 
+    "No Change": [
+        "salmon", 
+        "clothes", 
+        "dozen", 
+        "fish", 
+        "shorts", 
+        "scissors", 
+        "bison"
+    ], 
+    "Letter Changes": [
+        "children", 
+        "geese", 
+        "oxen", 
+        "firemen"
+    ]
+}

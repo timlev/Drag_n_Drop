@@ -1,0 +1,28 @@
+var lessonname = '3rdGrade/Unit 9 - Writing Sort';var lesson = {
+    "-ed": [
+        "decayed", 
+        "deployed", 
+        "journeyed"
+    ], 
+    "-ies": [
+        "bullies", 
+        "modifies", 
+        "parties", 
+        "studies"
+    ], 
+    "-ied": [
+        "buried", 
+        "horrified", 
+        "relied"
+    ], 
+    "-s": [
+        "delays"
+    ], 
+    "-ing": [
+        "emptying", 
+        "enjoying", 
+        "replying", 
+        "supplying", 
+        "worrying"
+    ]
+}

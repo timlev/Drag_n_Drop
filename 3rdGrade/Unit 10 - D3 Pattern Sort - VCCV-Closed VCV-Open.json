@@ -1,0 +1,38 @@
+var lessonname = '3rdGrade/Unit 10 - D3 Pattern Sort - VCCV-Closed VCV-Open';var lesson = {
+    "VCV\u2013Open": [
+        "basic", 
+        "bonus", 
+        "climate", 
+        "even", 
+        "nature", 
+        "silent", 
+        "writer", 
+        "frozen", 
+        "hero", 
+        "moment", 
+        "robot", 
+        "spider", 
+        "unit"
+    ], 
+    "VCCV\u2013Closed": [
+        "blizzard", 
+        "happen", 
+        "kitten", 
+        "lesson", 
+        "penny", 
+        "pepper", 
+        "pretty", 
+        "rabbit", 
+        "yellow", 
+        "better", 
+        "bottom", 
+        "copper", 
+        "fellow", 
+        "follow", 
+        "funny", 
+        "pattern", 
+        "pillow", 
+        "puppet", 
+        "tennis"
+    ]
+}

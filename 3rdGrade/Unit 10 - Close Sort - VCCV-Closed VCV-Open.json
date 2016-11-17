@@ -1,0 +1,10 @@
+var lessonname = '3rdGrade/Unit 10 - Close Sort - VCCV-Closed VCV-Open';var lesson = {
+    "VCCV\u2014Closed": [
+        "letter", 
+        "yellow"
+    ], 
+    "VCV\u2014Open": [
+        "tiger", 
+        "spider"
+    ]
+}
