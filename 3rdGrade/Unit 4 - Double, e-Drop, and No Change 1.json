@@ -1,0 +1,24 @@
+var lessonname = '3rdGrade/Unit 4 - Double, e-Drop, and No Change 1';var lesson = {
+    "Double": [
+        "wrapping", 
+        "getting", 
+        "hopping", 
+        "grabbing"
+    ], 
+    "No Change": [
+        "thanking", 
+        "briefing", 
+        "groaning", 
+        "smelling", 
+        "speaking", 
+        "cooking", 
+        "watching", 
+        "yelling"
+    ], 
+    "e-Drop": [
+        "whining", 
+        "skating", 
+        "baking", 
+        "staring"
+    ]
+}

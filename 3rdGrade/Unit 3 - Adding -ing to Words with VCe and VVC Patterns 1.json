@@ -1,0 +1,10 @@
+var lessonname = '3rdGrade/Unit 3 - Adding -ing to Words with VCe and VVC Patterns 1';var lesson = {
+    "No Change": [
+        "feeling", 
+        "cleaning"
+    ], 
+    "e-Drop": [
+        "making", 
+        "coming"
+    ]
+}

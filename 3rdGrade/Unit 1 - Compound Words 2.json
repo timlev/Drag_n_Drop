@@ -1,0 +1,24 @@
+var lessonname = '3rdGrade/Unit 1 - Compound Words 2';var lesson = {
+    "down": [
+        "touchdown", 
+        "downhill", 
+        "downtown", 
+        "countdown", 
+        "downstairs", 
+        "download"
+    ], 
+    "house": [
+        "doghouse", 
+        "housetop", 
+        "clubhouse", 
+        "housework"
+    ], 
+    "back": [
+        "backyard", 
+        "piggyback", 
+        "backpack", 
+        "background", 
+        "paperback", 
+        "backward"
+    ]
+}

@@ -1,0 +1,40 @@
+var lessonname = '3rdGrade/Unit 3 - Adding -ing to Words with VCe and VVC Patterns 3';var lesson = {
+    "Oddball": [
+        "flavoring", 
+        "recovering", 
+        "ordering"
+    ], 
+    "No Change": [
+        "breaking", 
+        "hearing", 
+        "dreaming", 
+        "floating", 
+        "screaming", 
+        "mailing", 
+        "waiting", 
+        "moaning", 
+        "squeaking", 
+        "cheering"
+    ], 
+    "e-Drop": [
+        "excusing", 
+        "rattling", 
+        "exciting", 
+        "packaging", 
+        "escaping", 
+        "arriving", 
+        "adoring", 
+        "icing", 
+        "serving", 
+        "tasting", 
+        "waving", 
+        "smiling", 
+        "having", 
+        "chasing", 
+        "phoning", 
+        "baking", 
+        "liking", 
+        "closing", 
+        "cycling"
+    ]
+}

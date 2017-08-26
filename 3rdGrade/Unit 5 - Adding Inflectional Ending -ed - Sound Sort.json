@@ -1,0 +1,24 @@
+var lessonname = '3rdGrade/Unit 5 - Adding Inflectional Ending -ed - Sound Sort';var lesson = {
+    "Double": [
+        "admitted", 
+        "chatted", 
+        "grabbed", 
+        "stirred"
+    ], 
+    "No Change": [
+        "answered", 
+        "joined", 
+        "passed", 
+        "waited", 
+        "yelled"
+    ], 
+    "e-Drop": [
+        "declared", 
+        "disguised", 
+        "lived", 
+        "organized", 
+        "smiled", 
+        "supposed", 
+        "surprised"
+    ]
+}

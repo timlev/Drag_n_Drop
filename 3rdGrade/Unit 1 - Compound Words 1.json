@@ -1,0 +1,24 @@
+var lessonname = '3rdGrade/Unit 1 - Compound Words 1';var lesson = {
+    "light": [
+        "lighthouse", 
+        "moonlight", 
+        "daylight", 
+        "flashlight", 
+        "sunlight"
+    ], 
+    "ball": [
+        "eyeball", 
+        "ballroom", 
+        "basketball", 
+        "football", 
+        "ballpark", 
+        "baseball"
+    ], 
+    "bed": [
+        "bedroom", 
+        "bedtime", 
+        "bedspread", 
+        "waterbed", 
+        "bedside"
+    ]
+}

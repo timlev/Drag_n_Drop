@@ -1,0 +1,12 @@
+var lessonname = '3rdGrade/Unit 5 - Adding Inflectional Ending -ed - 1';var lesson = {
+    "Double": [
+        "planned"
+    ], 
+    "No Change": [
+        "joined", 
+        "started"
+    ], 
+    "e-Drop": [
+        "skated"
+    ]
+}

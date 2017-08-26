@@ -1,0 +1,40 @@
+var lessonname = '3rdGrade/Unit 4 - Double, e-Drop, and No Change 2';var lesson = {
+    "Double": [
+        "jogging", 
+        "plotting", 
+        "quitting", 
+        "shopping", 
+        "tripping", 
+        "blurring", 
+        "grinning", 
+        "humming", 
+        "knotting", 
+        "tugging"
+    ], 
+    "No Change": [
+        "cheering", 
+        "climbing", 
+        "quacking", 
+        "scouting", 
+        "spending", 
+        "tracking", 
+        "feeling", 
+        "floating", 
+        "moaning", 
+        "pushing", 
+        "resting", 
+        "standing", 
+        "wrecking"
+    ], 
+    "e-Drop": [
+        "moving", 
+        "raking", 
+        "tasting", 
+        "using", 
+        "waving", 
+        "hiking", 
+        "wasting", 
+        "trading", 
+        "shaking"
+    ]
+}

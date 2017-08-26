@@ -1,0 +1,22 @@
+var lessonname = '3rdGrade/Unit 1 - Compound Words Buddy Sort';var lesson = {
+    "thing": [
+        "anything", 
+        "everything", 
+        "something"
+    ], 
+    "some": [
+        "somebody", 
+        "someone", 
+        "someplace", 
+        "something", 
+        "sometime", 
+        "somewhere"
+    ], 
+    "any": [
+        "anybody", 
+        "anyplace", 
+        "anything", 
+        "anytime", 
+        "anywhere"
+    ]
+}

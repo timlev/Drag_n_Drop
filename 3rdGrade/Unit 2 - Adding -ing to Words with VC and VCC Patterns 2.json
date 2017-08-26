@@ -1,0 +1,22 @@
+var lessonname = '3rdGrade/Unit 2 - Adding -ing to Words with VC and VCC Patterns 2';var lesson = {
+    "Not Doubled": [
+        "talk", 
+        "talking", 
+        "thank", 
+        "thanking", 
+        "turn", 
+        "turning", 
+        "pass", 
+        "passing"
+    ], 
+    "Doubled": [
+        "stop", 
+        "stopping", 
+        "plan", 
+        "planning", 
+        "shut", 
+        "shutting", 
+        "swim", 
+        "swimming"
+    ]
+}

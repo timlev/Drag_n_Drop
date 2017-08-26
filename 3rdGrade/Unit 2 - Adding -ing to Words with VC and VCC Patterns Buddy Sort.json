@@ -1,0 +1,24 @@
+var lessonname = '3rdGrade/Unit 2 - Adding -ing to Words with VC and VCC Patterns Buddy Sort';var lesson = {
+    "Not Doubled": [
+        "counting", 
+        "laughing", 
+        "planting", 
+        "standing", 
+        "starting", 
+        "working", 
+        "learning", 
+        "pretending", 
+        "scratching"
+    ], 
+    "Doubled": [
+        "bragging", 
+        "dropping", 
+        "grinning", 
+        "wrapping", 
+        "capping"
+    ], 
+    "Oddballs": [
+        "fixing", 
+        "waxing"
+    ]
+}

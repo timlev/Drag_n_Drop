@@ -1,0 +1,25 @@
+var lessonname = '3rdGrade/Unit 5 - Adding Inflectional Ending -ed - 2';var lesson = {
+    "Double": [
+        "planned", 
+        "stepped", 
+        "hopped", 
+        "stopped", 
+        "skipped"
+    ], 
+    "No Change": [
+        "started", 
+        "seemed", 
+        "acted", 
+        "asked", 
+        "jumped", 
+        "treated"
+    ], 
+    "e-Drop": [
+        "skated", 
+        "chased", 
+        "hoped", 
+        "scored", 
+        "pleased", 
+        "scared"
+    ]
+}
