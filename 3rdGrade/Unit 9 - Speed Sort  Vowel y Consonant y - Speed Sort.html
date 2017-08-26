@@ -125,7 +125,7 @@ function makeChoiceTable(lesson){
               var dropped_category = $(this).attr("name").split(",")[0];
               if (dragged_category == dropped_category){
                   ui.draggable.draggable("disable");
-                  $(this).css({"background-color":"yellow"});
+                  $(this).css({"background-color":"#70db70"});
                   $(this).html(ui.draggable.html());
                   ui.draggable.hide();
 				  //$(this).toggleClass("source");
