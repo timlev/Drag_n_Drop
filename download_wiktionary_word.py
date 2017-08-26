@@ -90,6 +90,8 @@ def convert_ogg_to_mp3(oggfile, remove_ogg = False):
     mp3path = oggpath.replace(".ogg",".mp3")
     if platform.system() == 'Linux':
         os.system('avconv -i "' + oggpath + '" "' + mp3path + '"')
+    else:
+        os.system('ffmpeg -i "' + oggpath + '" -acodec libmp3lame "' + mp3path + '"')
     if remove_ogg:
         os.remove(oggpath)
     return mp3path
