@@ -17,6 +17,7 @@ td {
 
 </style>
 <script>
+var maxColumns = 4;
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -35,8 +36,13 @@ function addstudent(student){
   studentTable = document.getElementById("studentTable");
   var tr = document.createElement("tr");
   var td = document.createElement("td");
+  var div = document.createElement("div");
   var txt = document.createTextNode(student);
-  td.appendChild(txt);
+  div.setAttribute('draggable', true);
+  div.setAttribute('ondragstart','drag(event)');
+  div.id = student;
+  div.appendChild(txt);
+  td.appendChild(div);
   tr.appendChild(td);
   studentTable.appendChild(tr);
 }
