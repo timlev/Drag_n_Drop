@@ -14,7 +14,14 @@ td {
     -ms-user-select: none;
     user-select: none;
 }
-
+#destination {
+  width: 50%;
+  float: left;
+}
+#studentTable {
+  width: 50%;
+  float: right;
+}
 </style>
 <script>
 var maxColumns = 4;
@@ -149,7 +156,6 @@ window.onload = function(){
     <td id="6,10" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
   </tr>
 </table>
-<br>
 <table id="studentTable" border="1">
 </table>
 </body>
