@@ -41,6 +41,12 @@ function drop(ev) {
 
 function addstudent(student){
   studentTable = document.getElementById("studentTable");
+  var lastRowIndex = studentTable.rows.length;
+  console.log(lastRowIndex);
+  // console.log(lastRowIndex);
+  // if (lastRowIndex > 0){
+  //   console.log(studentTable.rows[lastRowIndex].cells.length);
+  // }
   var tr = document.createElement("tr");
   var td = document.createElement("td");
   var div = document.createElement("div");
@@ -56,6 +62,7 @@ function addstudent(student){
 window.onload = function(){
   addstudent("student");
   addstudent("2student");
+  addstudent("3student");
   console.log("Rows: " + studentTable.rows.length);
   console.log("Columns: " + studentTable.rows[0].cells.length);
 
