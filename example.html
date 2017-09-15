@@ -34,10 +34,33 @@ function drag(ev) {
     ev.dataTransfer.setData("text/html", ev.target.id);
 }
 
+function updateTotals(){
+	var destinationTable = document.getElementById('destination');
+	for (i = 0; i < destinationTable.rows[0].cells.length;i++){
+		//console.log(i);
+		var tdcount = destinationTable.rows[1].cells[i].childElementCount;
+		var totaltd = destinationTable.rows[2].cells[i];
+		totaltd.innerHTML = tdcount.toString();
+		console.log(totaltd);
+	}
+	
+}
 function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text/html");
+    ev.stopPropagation();
+     var data = ev.dataTransfer.getData("text/html");
     ev.target.appendChild(document.getElementById(data));
+    updateTotals();
+    //console.log(document.getElementById('destination').rows[1].cells[0].childElementCount);
+}
+
+function dropsibling(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    var data = ev.dataTransfer.getData("text/html");
+    //console.log(ev.target.parentNode);
+    ev.target.parentNode.appendChild(document.getElementById(data));
+    updateTotals();
 }
 
 function addstudents(students){
@@ -60,6 +83,9 @@ function addstudents(students){
     var txt = document.createTextNode(students[student]);
     div.setAttribute('draggable', true);
     div.setAttribute('ondragstart','drag(event)');
+    div.setAttribute('ondrop','return true');
+    div.setAttribute('ondrop','dropsibling(event)');
+    div.setAttribute('ondragover','allowDrop(event)');
     div.id = students[student];
     div.appendChild(txt);
     td.appendChild(div);
@@ -91,15 +117,14 @@ window.onload = function(){
     <td id="4,1" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
     <td id="5,1" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
   </tr>
-  <!-- <tr>
-    <td id="1,2" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
-    <td id="2,2" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
-    <td id="3,2" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
-    <td id="4,2" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
-    <td id="5,2" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
-    <td id="6,2" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
-  </tr>
   <tr>
+    <td id="t1">0</td>
+    <td id="t2">0</td>
+    <td id="t3">0</td> </td>
+    <td id="t4">0</td>
+    <td id="t5">0</td>
+  </tr>
+  <!-- <tr>
     <td id="1,3" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
     <td id="2,3" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
     <td id="3,3" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
