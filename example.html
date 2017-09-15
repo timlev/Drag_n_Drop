@@ -23,46 +23,52 @@ td {
   float: right;
 }
 </style>
+<script src="../studentList.json"></script>
 <script>
-var maxColumns = 4;
+var maxColumns = 3;
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("text/html", ev.target.id);
 }
 
 function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
+    var data = ev.dataTransfer.getData("text/html");
     ev.target.appendChild(document.getElementById(data));
 }
 
-function addstudent(student){
+function addstudents(students){
   studentTable = document.getElementById("studentTable");
-  var lastRowIndex = studentTable.rows.length;
-  console.log(lastRowIndex);
+  var lastRowIndex = studentTable.rows.length-1;
   // console.log(lastRowIndex);
-  // if (lastRowIndex > 0){
-  //   console.log(studentTable.rows[lastRowIndex].cells.length);
-  // }
-  var tr = document.createElement("tr");
-  var td = document.createElement("td");
-  var div = document.createElement("div");
-  var txt = document.createTextNode(student);
-  div.setAttribute('draggable', true);
-  div.setAttribute('ondragstart','drag(event)');
-  div.id = student;
-  div.appendChild(txt);
-  td.appendChild(div);
-  tr.appendChild(td);
-  studentTable.appendChild(tr);
+  // console.log(lastRowIndex);
+  if (lastRowIndex > 0){
+    console.log(studentTable.rows.item(lastRowIndex).cells.length);
+  }
+  console.log(students[students.length - 1]);
+
+  for (var student in students){
+    // if (students[student] == undefined){
+    //
+    // }
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
+    var div = document.createElement("div");
+    var txt = document.createTextNode(students[student]);
+    div.setAttribute('draggable', true);
+    div.setAttribute('ondragstart','drag(event)');
+    div.id = students[student];
+    div.appendChild(txt);
+    td.appendChild(div);
+    tr.appendChild(td);
+    studentTable.appendChild(tr);
+  }
 }
 window.onload = function(){
-  addstudent("student");
-  addstudent("2student");
-  addstudent("3student");
+  addstudents(students);
   console.log("Rows: " + studentTable.rows.length);
   console.log("Columns: " + studentTable.rows[0].cells.length);
 
@@ -74,7 +80,6 @@ window.onload = function(){
   <tr id="choices">
     <th>Choice 1</th>
     <th>Choice 2</th>
-    <th>Choice 3</th>
     <th>PBJ</th>
     <th>Salad Bar</th>
     <th>Cold Lunch</th>
@@ -85,7 +90,6 @@ window.onload = function(){
     <td id="3,1" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
     <td id="4,1" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
     <td id="5,1" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
-    <td id="6,1" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
   </tr>
   <!-- <tr>
     <td id="1,2" ondrop="drop(event)" ondragover="allowDrop(event)"> </td>
