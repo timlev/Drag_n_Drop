@@ -34,9 +34,16 @@ function allowDrop(ev) {
 function drag(ev) {
     ev.dataTransfer.setData("text/html", ev.target.id);
 }
-
+function countUndecided(){
+  studentTable = document.getElementById("studentTable");
+  undecided = document.getElementById("undecided");
+  count = document.getElementsByClassName("undecided").length;
+  console.log(count);
+  undecided.innerHTML = count.toString();
+}
 function updateTotals(){
 	var destinationTable = document.getElementById('destination');
+  countUndecided();
 	for (i = 0; i < destinationTable.rows[0].cells.length;i++){
 		//console.log(i);
 		var tdcount = destinationTable.rows[1].cells[i].childElementCount;
@@ -51,6 +58,7 @@ function drop(ev) {
     ev.stopPropagation();
      var data = ev.dataTransfer.getData("text/html");
     ev.target.appendChild(document.getElementById(data));
+    document.getElementById(data).setAttribute("class","");
     updateTotals();
     //console.log(document.getElementById('destination').rows[1].cells[0].childElementCount);
 }
@@ -61,6 +69,7 @@ function dropsibling(ev) {
     var data = ev.dataTransfer.getData("text/html");
     //console.log(ev.target.parentNode);
     ev.target.parentNode.appendChild(document.getElementById(data));
+    document.getElementById(data).setAttribute("class","");
     updateTotals();
 }
 
@@ -87,6 +96,7 @@ function addstudents(students){
     div.setAttribute('ondrop','return true');
     div.setAttribute('ondrop','dropsibling(event)');
     div.setAttribute('ondragover','allowDrop(event)');
+    div.setAttribute('class','undecided');
     div.id = students[student];
     div.appendChild(txt);
     td.appendChild(div);
@@ -96,6 +106,7 @@ function addstudents(students){
 }
 window.onload = function(){
   addstudents(students);
+  countUndecided();
   }
 </script>
 </head>
@@ -188,6 +199,7 @@ window.onload = function(){
   </tr> -->
 </table>
 <table id="studentTable" border="1">
+  <tr><th>Undecided: <span id="undecided"></span></th></tr>
 </table>
 </body>
 </html>
