@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="example.css">
 <style>
 td {
   height: 30px;
@@ -41,9 +42,9 @@ function updateTotals(){
 		var tdcount = destinationTable.rows[1].cells[i].childElementCount;
 		var totaltd = destinationTable.rows[2].cells[i];
 		totaltd.innerHTML = tdcount.toString();
-		console.log(totaltd);
+		// console.log(totaltd);
 	}
-	
+
 }
 function drop(ev) {
     ev.preventDefault();
@@ -68,10 +69,10 @@ function addstudents(students){
   var lastRowIndex = studentTable.rows.length-1;
   // console.log(lastRowIndex);
   // console.log(lastRowIndex);
-  if (lastRowIndex > 0){
-    console.log(studentTable.rows.item(lastRowIndex).cells.length);
-  }
-  console.log(students[students.length - 1]);
+  // if (lastRowIndex > 0){
+  //   console.log(studentTable.rows.item(lastRowIndex).cells.length);
+  // }
+  // console.log(students[students.length - 1]);
 
   for (var student in students){
     // if (students[student] == undefined){
@@ -95,14 +96,11 @@ function addstudents(students){
 }
 window.onload = function(){
   addstudents(students);
-  console.log("Rows: " + studentTable.rows.length);
-  console.log("Columns: " + studentTable.rows[0].cells.length);
-
-}
+  }
 </script>
 </head>
 <body>
-<table id="destination" border="1">
+<table id="destination" class="blueTable">
   <tr id="choices">
     <th>Choice 1</th>
     <th>Choice 2</th>
