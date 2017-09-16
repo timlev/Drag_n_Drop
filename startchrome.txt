@@ -1,0 +1,1 @@
+google-chrome --app="file:///home/levtim/GitProjects/Drag_n_Drop/example.html"
