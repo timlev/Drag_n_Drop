@@ -26,7 +26,7 @@ td {
 </style>
 <script src="studentList.json"></script>
 <script>
-var maxColumns = 3;
+var maxColumns = 5;
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -62,7 +62,9 @@ function drop(ev) {
     console.log(document.getElementById(data).id);
     studentTable = document.getElementById("studentTable");
     // studentTable.deleteRow(Number(document.getElementById(data).id) + 1);
-    studentTable.rows.item(Number(document.getElementById(data).id) + 1).style.display = 'none';
+    //studentTable.rows.item(Number(document.getElementById(data).id) + 1).style.display = 'none';
+    //studentTable.rows.item(Number(document.getElementById(data).id) + 1).style.visibility = 'hidden';
+    //document.getElementById(data.id + "td").style.visibility = 'hidden';
     updateTotals();
     //console.log(document.getElementById('destination').rows[1].cells[0].childElementCount);
 }
@@ -77,11 +79,48 @@ function dropsibling(ev) {
     console.log(document.getElementById(data).id);
     studentTable = document.getElementById("studentTable");
     // studentTable.deleteRow(Number(document.getElementById(data).id) + 1);
-    studentTable.rows.item(Number(document.getElementById(data).id) + 1).style.display = 'none';
+    //studentTable.rows.item(Number(document.getElementById(data).id) + 1).style.display = 'none';
+    //document.getElementById(data.id + "td").style.visibility = 'hidden';
     updateTotals();
 }
 
+function setupStudentTable(students){
+  studentTable = document.getElementById("studentTable");
+  var rows = Math.floor(students.length / maxColumns);
+  var extras = students.length % maxColumns;
+  var count = 0;
+  //Set Colspan of Header
+  document.getElementById("studentHeader").colSpan = maxColumns;
+  console.log("Total: " + students.length.toString());
+  console.log("Cols: " + maxColumns.toString());
+  console.log("Rows: " + rows.toString());
+  console.log("Extras: " + extras.toString());
+  //Make blank table
+  //Make nice rows
+  for (var r = 0; r < rows; r++){
+    var tr = document.createElement("tr");
+    tr.id = "row" + r.toString();
+    for (var c = 0; c < maxColumns; c++){
+      var td = document.createElement("td");
+      td.id = count.toString() + "td";
+      tr.appendChild(td);
+      count += 1;
+    }
+    studentTable.appendChild(tr);
+  }
+  var tr = document.createElement("tr");
+  tr.id = rows + 1;  
+  for (var e = 0; e < extras; e++){
+    var td = document.createElement("td");
+    td.id = count.toString() + "td";
+    tr.appendChild(td);
+    count+=1
+  }
+  studentTable.appendChild(tr);
+}
+
 function addstudents(students){
+  setupStudentTable(students);
   studentTable = document.getElementById("studentTable");
   var lastRowIndex = studentTable.rows.length-1;
   // console.log(lastRowIndex);
@@ -95,8 +134,8 @@ function addstudents(students){
     // if (students[student] == undefined){
     //
     // }
-    var tr = document.createElement("tr");
-    var td = document.createElement("td");
+    //var tr = document.createElement("tr");
+    //var td = document.createElement("td");
     var div = document.createElement("div");
     var txt = document.createTextNode(students[student]);
     div.setAttribute('draggable', true);
@@ -108,9 +147,11 @@ function addstudents(students){
     div.setAttribute('class','undecided');
     div.id = student;
     div.appendChild(txt);
-    td.appendChild(div);
-    tr.appendChild(td);
-    studentTable.appendChild(tr);
+    document.getElementById(student.toString() + "td").appendChild(div);
+    //td.appendChild(div);
+    //td.id = student.toString() + "td";
+    //tr.appendChild(td);
+    //studentTable.appendChild(tr);
   }
 }
 window.onload = function(){
@@ -208,7 +249,7 @@ window.onload = function(){
   </tr> -->
 </table>
 <table id="studentTable" border="1">
-  <tr><th>Undecided: <span id="undecided"></span></th></tr>
+  <tr><th id="studentHeader">Undecided: <span id="undecided"></span></th></tr>
 </table>
 </body>
 </html>
