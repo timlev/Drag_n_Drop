@@ -38,7 +38,7 @@ function countUndecided(){
   studentTable = document.getElementById("studentTable");
   undecided = document.getElementById("undecided");
   count = document.getElementsByClassName("undecided").length;
-  console.log(count);
+  // console.log(count);
   undecided.innerHTML = count.toString();
 }
 function updateTotals(){
@@ -59,6 +59,10 @@ function drop(ev) {
      var data = ev.dataTransfer.getData("text/html");
     ev.target.appendChild(document.getElementById(data));
     document.getElementById(data).setAttribute("class","");
+    console.log(document.getElementById(data).id);
+    studentTable = document.getElementById("studentTable");
+    // studentTable.deleteRow(Number(document.getElementById(data).id) + 1);
+
     updateTotals();
     //console.log(document.getElementById('destination').rows[1].cells[0].childElementCount);
 }
@@ -70,6 +74,9 @@ function dropsibling(ev) {
     //console.log(ev.target.parentNode);
     ev.target.parentNode.appendChild(document.getElementById(data));
     document.getElementById(data).setAttribute("class","");
+    console.log(document.getElementById(data).id);
+    studentTable = document.getElementById("studentTable");
+    // studentTable.deleteRow(Number(document.getElementById(data).id) + 1);
     updateTotals();
 }
 
@@ -97,7 +104,7 @@ function addstudents(students){
     div.setAttribute('ondrop','dropsibling(event)');
     div.setAttribute('ondragover','allowDrop(event)');
     div.setAttribute('class','undecided');
-    div.id = students[student];
+    div.id = student;
     div.appendChild(txt);
     td.appendChild(div);
     tr.appendChild(td);
