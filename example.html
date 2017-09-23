@@ -159,6 +159,46 @@ function addstudents(students){
     //studentTable.appendChild(tr);
   }
 }
+function disableDrop(img){
+  var target = document.getElementById(img.id.replace("_img",",1"));
+  console.log(target);
+  target.ondragover = "";
+  target.style.backgroundColor = "gray";
+  img.src = "key.png";
+  console.log(img.onclick);
+  img.onclick = "enableDrop(this)";
+  console.log(img.onclick);
+}
+function enableDrop(img){
+  var target = document.getElementById(img.id.replace("_img",",1"));
+  console.log(target);
+  target.style.backgroundColor = "white";
+  target.ondragover = "allowDrop(event)";
+  img.src = "close.png";
+  img.onclick = "disableDrop(img)";
+
+}
+
+function toggleDrop(img){
+  console.log(img.name);
+  if (img.name == "close"){
+    var target = document.getElementById(img.id.replace("_img",",1"));
+    //target.ondragover = "";
+    target.removeAttribute("ondragover");
+    target.style.backgroundColor = "gray";
+    img.src = "key.png";
+    img.name = "key";
+    console.log(target);
+  }
+  else if (img.name == "key"){
+    var target = document.getElementById(img.id.replace("_img",",1"));
+    target.style.backgroundColor = "white";
+    target.setAttribute("ondragover","allowDrop(event)");
+    img.src = "close.png";
+    img.name = "close";
+    console.log(target);
+  }
+}
 window.onload = function(){
   addstudents(students);
   countUndecided();
@@ -168,11 +208,16 @@ window.onload = function(){
 <body>
 <table id="destination" class="blueTable">
   <tr id="choices">
-    <th><textarea rows="4" cols="7" maxlength="32" id="choice1" style="resize: none">Choice 1</textarea></th>
-    <th><textarea rows="4" cols="7" maxlength="32" id="choice2" style="resize: none">Choice 2</textarea></th>
-    <th><textarea rows="4" cols="3" maxlength="16" id="choice3" style="resize: none">PBJ</textarea></th>
-    <th><textarea rows="4" cols="5" maxlength="20" id="choice4" style="resize: none">Salad</textarea></th>
-    <th><textarea rows="4" cols="4" maxlength="16" id="choice5" style="resize: none">Cold</textarea></th>
+    <th><textarea rows="4" cols="7" maxlength="32" id="choice1" style="resize: none">Choice 1</textarea>
+        <img id="1_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+    <th><textarea rows="4" cols="7" maxlength="32" id="choice2" style="resize: none">Choice 2</textarea>
+        <img id="2_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+    <th><textarea rows="4" cols="3" maxlength="16" id="choice3" style="resize: none">PBJ</textarea>
+        <img id="3_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+    <th><textarea rows="4" cols="5" maxlength="20" id="choice4" style="resize: none">Salad</textarea>
+        <img id="4_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+    <th><textarea rows="4" cols="4" maxlength="16" id="choice5" style="resize: none">Cold</textarea>
+        <img id="5_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
 <!--    <th><input type="text" size="5" maxlength="20" placeholder="Choice 2" id="choice2"></input></th>
     <th><input type="text" size="1" maxlength="20" placeholder="PBJ" id="choice3"></input></th>
     <th><input type="text" size="5" maxlength="20" placeholder="Salad Bar" id="choice4"></input></th>
