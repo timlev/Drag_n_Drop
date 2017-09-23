@@ -64,7 +64,7 @@ function drop(ev) {
      var data = ev.dataTransfer.getData("text/html");
     ev.target.appendChild(document.getElementById(data));
     document.getElementById(data).setAttribute("class","");
-    console.log(document.getElementById(data).id);
+    //console.log(document.getElementById(data).id);
     studentTable = document.getElementById("studentTable");
     // studentTable.deleteRow(Number(document.getElementById(data).id) + 1);
     //studentTable.rows.item(Number(document.getElementById(data).id) + 1).style.display = 'none';
@@ -81,7 +81,7 @@ function dropsibling(ev) {
     //console.log(ev.target.parentNode);
     ev.target.parentNode.appendChild(document.getElementById(data));
     document.getElementById(data).setAttribute("class","");
-    console.log(document.getElementById(data).id);
+    //console.log(document.getElementById(data).id);
     studentTable = document.getElementById("studentTable");
     // studentTable.deleteRow(Number(document.getElementById(data).id) + 1);
     //studentTable.rows.item(Number(document.getElementById(data).id) + 1).style.display = 'none';
@@ -161,42 +161,42 @@ function addstudents(students){
 }
 function disableDrop(img){
   var target = document.getElementById(img.id.replace("_img",",1"));
-  console.log(target);
+  //console.log(target);
   target.ondragover = "";
   target.style.backgroundColor = "gray";
   img.src = "key.png";
-  console.log(img.onclick);
+  //console.log(img.onclick);
   img.onclick = "enableDrop(this)";
-  console.log(img.onclick);
+  //console.log(img.onclick);
 }
 function enableDrop(img){
   var target = document.getElementById(img.id.replace("_img",",1"));
-  console.log(target);
+  //console.log(target);
   target.style.backgroundColor = "white";
   target.ondragover = "allowDrop(event)";
-  img.src = "close.png";
+  img.src = "lock.png";
   img.onclick = "disableDrop(img)";
 
 }
 
 function toggleDrop(img){
-  console.log(img.name);
-  if (img.name == "close"){
+  //console.log(img.name);
+  if (img.name == "lock"){
     var target = document.getElementById(img.id.replace("_img",",1"));
     //target.ondragover = "";
     target.removeAttribute("ondragover");
     target.style.backgroundColor = "gray";
-    img.src = "key.png";
-    img.name = "key";
-    console.log(target);
+    img.src = "unlock.png";
+    img.name = "unlock";
+    //console.log(target);
   }
-  else if (img.name == "key"){
+  else if (img.name == "unlock"){
     var target = document.getElementById(img.id.replace("_img",",1"));
     target.style.backgroundColor = "white";
     target.setAttribute("ondragover","allowDrop(event)");
-    img.src = "close.png";
-    img.name = "close";
-    console.log(target);
+    img.src = "lock.png";
+    img.name = "lock";
+    //console.log(target);
   }
 }
 window.onload = function(){
@@ -209,15 +209,15 @@ window.onload = function(){
 <table id="destination" class="blueTable">
   <tr id="choices">
     <th><textarea rows="4" cols="7" maxlength="32" id="choice1" style="resize: none">Choice 1</textarea>
-        <img id="1_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+        <img id="1_img" name="lock" src="lock.png" onclick="toggleDrop(this)" style='display:block;' ></th>
     <th><textarea rows="4" cols="7" maxlength="32" id="choice2" style="resize: none">Choice 2</textarea>
-        <img id="2_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+        <img id="2_img" name="lock" src="lock.png" onclick="toggleDrop(this)" style='display:block;' ></th>
     <th><textarea rows="4" cols="3" maxlength="16" id="choice3" style="resize: none">PBJ</textarea>
-        <img id="3_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+        <img id="3_img" name="lock" src="lock.png" onclick="toggleDrop(this)" style='display:block;' ></th>
     <th><textarea rows="4" cols="5" maxlength="20" id="choice4" style="resize: none">Salad</textarea>
-        <img id="4_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+        <img id="4_img" name="lock" src="lock.png" onclick="toggleDrop(this)" style='display:block;' ></th>
     <th><textarea rows="4" cols="4" maxlength="16" id="choice5" style="resize: none">Cold</textarea>
-        <img id="5_img" name="close" src="close.png" onclick="toggleDrop(this)" style='display:block;' height="10" width="10"></th>
+        <img id="5_img" name="lock" src="lock.png" onclick="toggleDrop(this)" style='display:block;' ></th>
 <!--    <th><input type="text" size="5" maxlength="20" placeholder="Choice 2" id="choice2"></input></th>
     <th><input type="text" size="1" maxlength="20" placeholder="PBJ" id="choice3"></input></th>
     <th><input type="text" size="5" maxlength="20" placeholder="Salad Bar" id="choice4"></input></th>

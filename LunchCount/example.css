@@ -14,10 +14,16 @@ body * {
   text-transform: uppercase;
 }
 
+/*
 img {
   border-radius: 50%;
   height: 60px;
   width: 60px;
+}
+*/
+
+table img {
+  width:40px;
 }
 
 .table-users {
