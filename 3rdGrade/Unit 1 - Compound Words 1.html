@@ -115,9 +115,9 @@ function makeChoiceTable(lesson){
 		    var score = 0;
 			var words_remaining = 0;
             makeBlankTable(lesson);
-            $(".source").bind("tap", tapHandler );
+            //$(".source").bind("tap", tapHandler );
             //$(".source").bind("click", tapHandler );
-            //$(".source").bind("taphold", tapHandler );
+            $(".source").bind("taphold", tapHandler );
 	  //$(".source").bind("dragstart", tapHandler );
           $( ".source" ).draggable({ revert: "invalid", scroll: false});
           $( ".destination" ).droppable({
