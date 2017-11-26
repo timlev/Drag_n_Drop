@@ -64,6 +64,7 @@ function makeBlankTable(lesson){
 function tapHandler(event){
     var audioId = event.target.id + "_audio";
     console.log(audioId);
+    //alert(audioId);
     document.getElementById(audioId).play();
 }
 
@@ -139,7 +140,7 @@ function makeChoiceTable(lesson){
 		      var score = 0;
 			    var words_remaining = 0;
             makeBlankTable(lesson);
-//            $(".source").bind("tap", tapHandler );
+            //$(".source").bind("tap", tapHandler );
             //$(".source").bind("click", tapHandler );
             //$(".source").bind("taphold", tapHandler );
 			    $(".source").on("dragstart", tapHandler );
