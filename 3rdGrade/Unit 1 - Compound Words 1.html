@@ -63,8 +63,15 @@ function makeBlankTable(lesson){
 }
 function tapHandler(event){
     var audioId = event.target.id + "_audio";
-    console.log(audioId);
+    console.log(event.target.id);
     //alert(audioId);
+    txtObj = document.getElementById(event.target.id);
+    audioObj = document.getElementById(audioId);
+    //sourcediv.style.backgroundColor = "yellow";
+    audioObj.addEventListener("ended", function(){
+      txtObj.style.backgroundColor = "transparent";
+    });
+    txtObj.style.backgroundColor = "yellow";
     document.getElementById(audioId).play();
 }
 
