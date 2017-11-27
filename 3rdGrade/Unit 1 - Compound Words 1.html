@@ -12,6 +12,15 @@
     	<script src="../jquery.ui.touch-punch.min.js"></script>
 		<script src="Unit 1 - Compound Words 1.json"></script>
 <script>
+// document.addEventListener('play', function(e){
+//     var audios = document.getElementsByTagName('audio');
+//     for(var i = 0, len = audios.length; i < len;i++){
+//         if(audios[i] != e.target){
+//             audios[i].pause();
+//         }
+//     }
+// }, true);
+
     function shuffle(a) {
         var j, x, i;
         for (i = a.length; i; i--) {
@@ -68,6 +77,9 @@ function tapHandler(event){
     txtObj = document.getElementById(event.target.id);
     audioObj = document.getElementById(audioId);
     //sourcediv.style.backgroundColor = "yellow";
+    // audioObj.addEventListener("pause", function(){
+    //   txtObj.style.backgroundColor = "transparent";
+    // });
     audioObj.addEventListener("ended", function(){
       txtObj.style.backgroundColor = "transparent";
     });
