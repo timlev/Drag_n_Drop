@@ -6,10 +6,12 @@
 
     	<link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet">
     	<link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/css/lightness/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
-    	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    	<script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    	<script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
-		<script src="Unit 7 Teacher-Directed Sort Adding Plural Endings -es, -ies.json"></script>
+      <link href="../sliders.css" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+    	<script src="../jquery.ui.touch-punch.min.js"></script>
+      <script src="Unit 7 Teacher-Directed Sort Adding Plural Endings -es, -ies.json"></script>
+
 <script>
     function shuffle(a) {
         var j, x, i;
@@ -20,7 +22,7 @@
             a[j] = x;
         }
         return a;
-    }   
+    }
 
 
 function makeBlankTable(lesson){
@@ -62,17 +64,22 @@ function makeBlankTable(lesson){
 }
 function tapHandler(event){
     var audioId = event.target.id + "_audio";
-    console.log(audioId);
+    console.log(event.target.id);
+    //alert(audioId);
+    txtObj = document.getElementById(event.target.id);
+    audioObj = document.getElementById(audioId);
+    audioObj.addEventListener("ended", function(){
+      txtObj.style.backgroundColor = "transparent";
+    });
+    txtObj.style.backgroundColor = "yellow";
     document.getElementById(audioId).play();
 }
 
-    
+
 function makeChoiceTable(lesson){
 //    table to take answers from
-    var sourcesTable = document.createElement('table');
+    var sourcesTable = document.createElement('div');
     sourcesTable.setAttribute("id","sourcetable");
-//    sourcesTable.style.display = "flex";
-//    sourcesTable.style.flex-wrap = "wrap";
     var headerContents = Object.keys(lesson);
     var mixedWords = [];
     for (category in headerContents){
@@ -93,31 +100,40 @@ function makeChoiceTable(lesson){
             mixedWords.push(newDiv);
         }
     }
-    
+
     //    needs to randomize placements
     mixedWords = shuffle(mixedWords);
 	words_remaining = mixedWords.length;
-//    console.log(mixedWords);
+
+
+  var slidetoggleinteraction = document.getElementById("toggleinteraction");
+  slidetoggleinteraction.addEventListener("click",function(){
+    if (slidetoggleinteraction.checked == false){
+      $( ".source" ).draggable("enable");
+    }
+    else {
+      $(".source").on("click", tapHandler );
+      $(".source").draggable("disable");
+    }
+  });
     for (index in mixedWords){
         sourcesTable.appendChild(mixedWords[index]);
     }
 
 //    give names with , split for category (correctcolumn, startingrow)
         document.getElementById("tableContainer").appendChild(sourcesTable);
-    
+
 }
+
         </script>
         <script>
-        
+
         $(document).ready(function(){
         $(function() {
-		    var score = 0;
-			var words_remaining = 0;
-            makeBlankTable(lesson);
-//            $(".source").bind("tap", tapHandler );
-            //$(".source").bind("click", tapHandler );
-            //$(".source").bind("taphold", tapHandler );
-			$(".source").bind("dragstart", tapHandler );
+		      var score = 0;
+			    var words_remaining = 0;
+          makeBlankTable(lesson);
+			    $(".source").on("dragstart", tapHandler );
           $( ".source" ).draggable({ revert: "invalid", scroll: false});
           $( ".destination" ).droppable({
             drop: function( event, ui ) {
@@ -141,7 +157,7 @@ function makeChoiceTable(lesson){
 	          else{
 	              ui.draggable.css({"color":"red"});
 	              moves += 1;
-	              
+
 	          }
 
             }
@@ -157,18 +173,24 @@ function makeChoiceTable(lesson){
         </script>
 
     </head>
-    
+
     <body>
+   <div id="header">
+     <label class="switch">
+      <input id="toggleinteraction" type="checkbox">
+      <span class="slider round"></span>
+    </label>
+    <span id="toggleinteractiontext">Lock</span>
+  </div>
     <div id="lessonchooser" style="display:none">
         <table>
         <th>3rd grade</th><th>4th grade</th><th>5th grade</th>
         <tr><td></td><td></td><td></td></tr>
         </table>
-    </div>        
+    </div>
     <div id="menu_link"></div>
     <div id="tableContainer"></div>
-<!--    <h3 id="status"></h3> --!>
-    
+
 <div id="menu"><center><h3><img src="../pitr_red_menu_icon_set_4.png" height="50px" width="50px"/><a href="../index.html">Lesson Menu</a></h3></center></div>
     </body>
 

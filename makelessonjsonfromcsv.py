@@ -30,7 +30,7 @@ def write_html(json_filename):
     html_filename = json_filename.replace(".json", ".html")
     #Open orignial drag_n_drop.html
     html_contents = ""
-    with open("drag_n_drop.html", "r") as fp:
+    with open("drag_n_drop2.html", "r") as fp:
         html_contents += fp.read()
     #Point to json file in same folder
     json_link = json_filename.split("/")[1]

@@ -10,17 +10,9 @@
       <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
       <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
     	<script src="../jquery.ui.touch-punch.min.js"></script>
-		<script src="Unit 1 - Compound Words 1.json"></script>
-<script>
-// document.addEventListener('play', function(e){
-//     var audios = document.getElementsByTagName('audio');
-//     for(var i = 0, len = audios.length; i < len;i++){
-//         if(audios[i] != e.target){
-//             audios[i].pause();
-//         }
-//     }
-// }, true);
+      <script src="Unit 1 - Compound Words 1.json"></script>
 
+<script>
     function shuffle(a) {
         var j, x, i;
         for (i = a.length; i; i--) {
@@ -76,10 +68,6 @@ function tapHandler(event){
     //alert(audioId);
     txtObj = document.getElementById(event.target.id);
     audioObj = document.getElementById(audioId);
-    //sourcediv.style.backgroundColor = "yellow";
-    // audioObj.addEventListener("pause", function(){
-    //   txtObj.style.backgroundColor = "transparent";
-    // });
     audioObj.addEventListener("ended", function(){
       txtObj.style.backgroundColor = "transparent";
     });
@@ -92,8 +80,6 @@ function makeChoiceTable(lesson){
 //    table to take answers from
     var sourcesTable = document.createElement('div');
     sourcesTable.setAttribute("id","sourcetable");
-//    sourcesTable.style.display = "flex";
-//    sourcesTable.style.flex-wrap = "wrap";
     var headerContents = Object.keys(lesson);
     var mixedWords = [];
     for (category in headerContents){
@@ -122,26 +108,14 @@ function makeChoiceTable(lesson){
 
   var slidetoggleinteraction = document.getElementById("toggleinteraction");
   slidetoggleinteraction.addEventListener("click",function(){
-    // console.log(slidetoggleinteraction.checked);
     if (slidetoggleinteraction.checked == false){
-      // $(".source").off();
-      //$(".source").on("click", tapHandler );
-      //$( ".source" ).draggable({ revert: "invalid", scroll: false});
       $( ".source" ).draggable("enable");
-      // $(".source").on("dragstart", tapHandler );
-      //$(".source").draggable("enable");
-      //$(".source").draggable = true;
-
     }
     else {
-
-      // $(".source").off();
       $(".source").on("click", tapHandler );
       $(".source").draggable("disable");
-
     }
   });
-//    console.log(mixedWords);
     for (index in mixedWords){
         sourcesTable.appendChild(mixedWords[index]);
     }
@@ -158,10 +132,7 @@ function makeChoiceTable(lesson){
         $(function() {
 		      var score = 0;
 			    var words_remaining = 0;
-            makeBlankTable(lesson);
-            //$(".source").bind("tap", tapHandler );
-            //$(".source").bind("click", tapHandler );
-            //$(".source").bind("taphold", tapHandler );
+          makeBlankTable(lesson);
 			    $(".source").on("dragstart", tapHandler );
           $( ".source" ).draggable({ revert: "invalid", scroll: false});
           $( ".destination" ).droppable({
@@ -219,7 +190,6 @@ function makeChoiceTable(lesson){
     </div>
     <div id="menu_link"></div>
     <div id="tableContainer"></div>
-<!--    <h3 id="status"></h3> --!>
 
 <div id="menu"><center><h3><img src="../pitr_red_menu_icon_set_4.png" height="50px" width="50px"/><a href="../index.html">Lesson Menu</a></h3></center></div>
     </body>
