@@ -55,6 +55,26 @@ def get_sounds(json_dict):
             dw.get_wiki(w)
     print down.unable_to_download
 """
+
+def download_sound_files(master_word_list):
+    print "Downloading sound files ..."
+    soundfiles = [f.replace(".mp3","") for f in os.listdir("./sounds/") if f.endswith(".mp3")]
+
+    for word in [word for word in master_word_list if word not in soundfiles]:
+        downloaded_word = False
+        try:
+            oggpath = download_wiktionary_word.get_wiki(word, "./sounds/")
+            if oggpath != 2:
+                download_wiktionary_word.convert_ogg_to_mp3(oggpath, True)
+                downloaded_word = True
+        except:
+            print "Could't convert from wiki", word
+        if downloaded_word == False:
+            try:
+                mp3path = download_wiktionary_word.download_gstatic(word, "./sounds/")
+            except:
+                print "Couldn't download from GStatic"
+                
 def get_sounds(json_dict):
     import download_wiktionary_word
     print "Downloading sound files ..."
@@ -80,6 +100,9 @@ def get_sounds(json_dict):
             except:
                 print "Couldn't download from GStatic"
     print missing_words
+    missing_words = "\n".join(missing_words)
+    return missing_words
+
 
 if __name__ == '__main__':
     filename = "Unit 1 - in, un, dis, mis.csv"
