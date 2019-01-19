@@ -1,0 +1,14 @@
+var lessonname = '5thGrade/Unit 11 -ian, -ion';var lesson = {
+    "-ian": [
+        "clinician", 
+        "electrician", 
+        "magician", 
+        "musician"
+    ], 
+    "-ion": [
+        "desertion", 
+        "digestion", 
+        "disruption", 
+        "suggestion"
+    ]
+}
