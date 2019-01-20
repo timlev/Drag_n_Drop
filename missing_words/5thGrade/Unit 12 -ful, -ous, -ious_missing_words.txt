@@ -4,5 +4,3 @@ nutritious
 fictitious
 rebellious
 wasteful
-peaceful
-grateful
