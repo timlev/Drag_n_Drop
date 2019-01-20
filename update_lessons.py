@@ -17,19 +17,19 @@ for grade in gradelevels:
 			wb.write(missing_words)
 		
 		# #Add to Index
-		# folder, lesson = os.path.split(filename)
-		# index = bs4.BeautifulSoup(open("index.html"), "html5lib")
-		# table_cell = index.find(id = folder)
-		# new_link = index.new_tag('a', href = filename.replace(".csv",".html"))
-		# new_link.string = lesson.replace(".csv","")
-		# li_tag = index.new_tag("li")
-		# table_cell.ul.append(li_tag)
-		# li_tag.append(new_link)
+		folder, lesson = os.path.split(filename)
+		index = bs4.BeautifulSoup(open("index.html"), "html5lib")
+		table_cell = index.find(id = folder)
+		new_link = index.new_tag('a', href = filename.replace(".csv",".html"))
+		new_link.string = lesson.replace(".csv","")
+		li_tag = index.new_tag("li")
+		table_cell.ul.append(li_tag)
+		li_tag.append(new_link)
 		
-		# #Write Index file
-		# print "Updating index.html..."
-		# with open("index.html", "wb") as wb:
-			# wb.write(index.prettify(formatter="html"))
-		# print "Index File Updated"
+		#Write Index file
+		print "Updating index.html..."
+		with open("index.html", "wb") as wb:
+			wb.write(index.prettify(formatter="html"))
+		print "Index File Updated"
 
 #generate new index.html file with all lessons
