@@ -1,0 +1,16 @@
+var lessonname = '5thGrade/Unit 13 -en, -ize, -ify';var lesson = {
+    "-en,": [
+        "forbidden", 
+        "mistaken"
+    ], 
+    "-ify": [
+        "beautify", 
+        "diversify", 
+        "notify"
+    ], 
+    "-ize,": [
+        "analyze", 
+        "apologize", 
+        "visualize"
+    ]
+}

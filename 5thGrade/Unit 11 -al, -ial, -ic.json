@@ -1,0 +1,16 @@
+var lessonname = '5thGrade/Unit 11 -al, -ial, -ic';var lesson = {
+    "-ial": [
+        "industrial", 
+        "memorial", 
+        "territorial"
+    ], 
+    "-ic": [
+        "realistic", 
+        "poetic"
+    ], 
+    "-al": [
+        "accidental", 
+        "arrival", 
+        "rehearsal"
+    ]
+}

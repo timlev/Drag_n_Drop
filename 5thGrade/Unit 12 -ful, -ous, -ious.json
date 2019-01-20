@@ -1,0 +1,16 @@
+var lessonname = '5thGrade/Unit 12 -ful, -ous, -ious';var lesson = {
+    "-ous": [
+        "humorous", 
+        "outrageous"
+    ], 
+    "-ious": [
+        "nutritious", 
+        "fictitious", 
+        "rebellious"
+    ], 
+    "-ful": [
+        "wasteful", 
+        "peaceful", 
+        "grateful"
+    ]
+}
