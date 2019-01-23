@@ -1,4 +1,1 @@
-clinician
-electrician
-desertion
-disruption
+magician
