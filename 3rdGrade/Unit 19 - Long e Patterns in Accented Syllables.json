@@ -1,0 +1,22 @@
+var lessonname = '3rdGrade/Unit 19 - Long e Patterns in Accented Syllables';var lesson = {
+    "ee": [
+        "indeed", 
+        "needle", 
+        "fifteen", 
+        "weedy", 
+        "feeling"
+    ], 
+    "Open e": [
+        "evil", 
+        "secret", 
+        "equal"
+    ], 
+    "ea": [
+        "feature", 
+        "meaning"
+    ], 
+    "e_e": [
+        "trapeze", 
+        "supreme"
+    ]
+}
