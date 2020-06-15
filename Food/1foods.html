@@ -90,6 +90,16 @@ window.words_remaining = 0;
 
     }
   });
+  var slidetoggleinteraction = document.getElementById("toggleinteraction");
+  slidetoggleinteraction.addEventListener("click",function(){
+    if (slidetoggleinteraction.checked == false){
+      $( ".source" ).draggable("enable");
+    }
+    else {
+      $(".source").on("click", tapHandler );
+      $(".source").draggable("disable");
+    }
+  });
 });
 
     var score = 0;
@@ -101,6 +111,13 @@ Food
 </head>
 
 <body>
+  <div id="header">
+    <label class="switch">
+     <input id="toggleinteraction" type="checkbox">
+     <span class="slider round"></span>
+   </label>
+   <span id="toggleinteractiontext">Lock</span>
+ </div>
 <table id="pictures_and_destinations">
 <tr id="1">
 <td id="1a">
