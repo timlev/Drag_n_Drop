@@ -1,12 +1,4 @@
-fourcol = [["1a","1b","1c","1d"],["2a","2b","2c","2d"],["3a","3b","3c","3d"]]
-threecol = [["1a","1b","1c"],["2a","2b","2c"],["3a","3b","3c"]]
-#wordlist = ['cookie','coffee','pop','ice cream','hamburger','salad','cake','tea','fries']
-#wordlist = ["eggs","bake","baking powder","pour","heat","sugar","vanilla","butter","flour"]
-wordlist = ["grain","protein","fruit","vegetables","dairy","sleeping","walk","run","playing"]
-
-index = 0
-
-print """<html>
+<html>
 <head>
   <link rel="stylesheet" type="text/css" href="./../drag_n_drop_theme.css" />
 <link
@@ -127,38 +119,94 @@ Food
    <span id="toggleinteractiontext">Lock</span>
  </div>
 <table id="pictures_and_destinations">
-<tr>"""
-
-for row in threecol:
-    print '<tr>'
-    for col in row:
-        print '<td id="'+col+'">'
-        print '<div class="image"><img src="imgs/'+ wordlist[index] + '.png"/></div>'
-        print '<div class="destination" name="' + col[0] + ',' + col[1] + '" id="droppable"></div>'
-        print '</td>'
-        index += 1
-    print '</tr>'
-print """</td>
+<tr>
+<tr>
+<td id="1a">
+<div class="image"><img src="imgs/grain.png"/></div>
+<div class="destination" name="1,a" id="droppable"></div>
+</td>
+<td id="1b">
+<div class="image"><img src="imgs/protein.png"/></div>
+<div class="destination" name="1,b" id="droppable"></div>
+</td>
+<td id="1c">
+<div class="image"><img src="imgs/fruit.png"/></div>
+<div class="destination" name="1,c" id="droppable"></div>
+</td>
+</tr>
+<tr>
+<td id="2a">
+<div class="image"><img src="imgs/vegetables.png"/></div>
+<div class="destination" name="2,a" id="droppable"></div>
+</td>
+<td id="2b">
+<div class="image"><img src="imgs/dairy.png"/></div>
+<div class="destination" name="2,b" id="droppable"></div>
+</td>
+<td id="2c">
+<div class="image"><img src="imgs/sleeping.png"/></div>
+<div class="destination" name="2,c" id="droppable"></div>
+</td>
+</tr>
+<tr>
+<td id="3a">
+<div class="image"><img src="imgs/walk.png"/></div>
+<div class="destination" name="3,a" id="droppable"></div>
+</td>
+<td id="3b">
+<div class="image"><img src="imgs/run.png"/></div>
+<div class="destination" name="3,b" id="droppable"></div>
+</td>
+<td id="3c">
+<div class="image"><img src="imgs/playing.png"/></div>
+<div class="destination" name="3,c" id="droppable"></div>
+</td>
+</tr>
+</td>
 </tr>
 </table>
 <table id="answers">
-<tr>"""
-
-index = 0
-
-for row in threecol:
-    for col in row:
-        print '<td id="'+col+'">'
-        print '<div name="' + col[0] + ',' + col[1] + '" id="'+ wordlist[index] + '" class="source">'+ wordlist[index] + '</div>'
-        print '<audio name="'+ col[0] + ',' + col[1] + '" id="'+ wordlist[index] + '_audio" src="../sounds/'+ wordlist[index] + '.mp3"></audio>'
-        print '</td>'
-        index += 1
-
-
-print """</tr>
+<tr>
+<td id="1a">
+<div name="1,a" id="grain" class="source">grain</div>
+<audio name="1,a" id="grain_audio" src="../sounds/grain.mp3"></audio>
+</td>
+<td id="1b">
+<div name="1,b" id="protein" class="source">protein</div>
+<audio name="1,b" id="protein_audio" src="../sounds/protein.mp3"></audio>
+</td>
+<td id="1c">
+<div name="1,c" id="fruit" class="source">fruit</div>
+<audio name="1,c" id="fruit_audio" src="../sounds/fruit.mp3"></audio>
+</td>
+<td id="2a">
+<div name="2,a" id="vegetables" class="source">vegetables</div>
+<audio name="2,a" id="vegetables_audio" src="../sounds/vegetables.mp3"></audio>
+</td>
+<td id="2b">
+<div name="2,b" id="dairy" class="source">dairy</div>
+<audio name="2,b" id="dairy_audio" src="../sounds/dairy.mp3"></audio>
+</td>
+<td id="2c">
+<div name="2,c" id="sleeping" class="source">sleeping</div>
+<audio name="2,c" id="sleeping_audio" src="../sounds/sleeping.mp3"></audio>
+</td>
+<td id="3a">
+<div name="3,a" id="walk" class="source">walk</div>
+<audio name="3,a" id="walk_audio" src="../sounds/walk.mp3"></audio>
+</td>
+<td id="3b">
+<div name="3,b" id="run" class="source">run</div>
+<audio name="3,b" id="run_audio" src="../sounds/run.mp3"></audio>
+</td>
+<td id="3c">
+<div name="3,c" id="playing" class="source">playing</div>
+<audio name="3,c" id="playing_audio" src="../sounds/playing.mp3"></audio>
+</td>
+</tr>
 </table>
 
 
 
 </body>
-</html>"""
+</html>
