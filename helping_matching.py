@@ -2,8 +2,8 @@ fourcol = [["1a","1b","1c","1d"],["2a","2b","2c","2d"],["3a","3b","3c","3d"]]
 threecol = [["1a","1b","1c"],["2a","2b","2c"],["3a","3b","3c"]]
 #wordlist = ['cookie','coffee','pop','ice cream','hamburger','salad','cake','tea','fries']
 #wordlist = ["eggs","bake","baking powder","pour","heat","sugar","vanilla","butter","flour"]
-wordlist = ["grain","protein","fruit","vegetables","dairy","sleeping","walk","run","playing"]
-
+#wordlist = ["grain","protein","fruit","vegetables","dairy","sleeping","walk","run","playing"]
+wordlist = ["cook","open","cut","mix","peel","microwave","oven","boil","wash"]
 index = 0
 
 print """<html>
