@@ -1,4 +1,6 @@
-import urllib2
+import urllib
+import urllib.parse
+import urllib.request
 import os
 import tempfile
 import platform
@@ -15,23 +17,30 @@ def check_downloaded_word(word, directory="./"):
 
 def get_wiki(word, directory="./"):
     if check_downloaded_word(word, directory):
+        print(word + " already downloaded")
         return 0
     #search for wiktionary word
     base = "https://en.wiktionary.org/wiki/"
-    query = base + urllib2.quote(word)
+    query = base + urllib.parse.quote(word)
     print(query)
     try:
-        response = urllib2.urlopen(query)
+        response = urllib.request.urlopen(query)
+        print(response)
     except:
         print("Couldn't find", word)
         return 1
     print("Processing response")
     index = bs4.BeautifulSoup(response,"html5lib")
     filenameguess = "File:en-us-" + word + ".ogg"
-    #print(index.find(title=filenameguess)
+    #print(index.find(title=filenameguess))
     #Jump to file wiktionary page
     query = base + filenameguess
-    response = urllib2.urlopen(query)
+    try:
+        response = urllib.request.urlopen(query)
+    except:
+        print("HTTP error for " + query)
+        return 2
+    print(response)
     index = bs4.BeautifulSoup(response, "html5lib")
     links = index.find_all("a")
     oggsource = ""
@@ -43,7 +52,7 @@ def get_wiki(word, directory="./"):
     print("Downloading to: " + os.path.join(directory, word + ".ogg"))
     try:
         print("Getting ogg...")
-        getogg = urllib2.urlopen(oggsource)
+        getogg = urllib.request.urlopen(oggsource)
         print("Saving file ...")
         ofp = open(os.path.join(directory, word + ".ogg"),'wb')
         print("Writing file ...")
@@ -69,7 +78,7 @@ def get_wiki(word, directory="./"):
     # print("Downloading to:", os.path.join(directory, word + ".ogg"))
     # try:
         # print("Getting ogg...")
-        # getogg = urllib2.urlopen(oggsource)
+        # getogg = urllib.urlopen(oggsource)
         # print("Saving file ...")
         # ofp = open(os.path.join(directory, word + ".ogg"),'wb')
         # print("Writing file ...")
@@ -79,7 +88,7 @@ def get_wiki(word, directory="./"):
     # except:
         # #print("Could not download:", word)
         # return 2
-        
+
 #download wiktionary ogg file
 
 def download_gstatic(word, directory="./"):
@@ -89,13 +98,13 @@ def download_gstatic(word, directory="./"):
     query = base + word + ".mp3"
     print(query)
     try:
-        response = urllib2.urlopen(query)
+        response = urllib.urlopen(query)
     except:
         print("Couldn't find", word)
         return 1
     try:
         print("Getting mp3...")
-        getmp3 = urllib2.urlopen(query)
+        getmp3 = urllib.urlopen(query)
         print("Saving file ...")
         ofp = open(os.path.join(directory, word + ".mp3"),'wb')
         print("Writing file ...")
@@ -125,12 +134,14 @@ if __name__ == "__main__":
     #print(download_gstatic("blowhole"))
     #print(download_gstatic("myword"))
     #wordlist = ["zero", "ten", "twenty", "one", "eleven", "twenty-one", "two", "twelve", "twenty-two", "three", "thirteen", "twenty-three", "four", "fourteen", "twenty-four", "five", "fifteen", "twenty-five", "six", "sixteen", "twenty-six", "seven", "seventeen", "twenty-seven", "eight", "eighteen", "twenty-eight", "nine", "nineteen", "twenty-nine", "thirty", "forty", "seventy", "thirty-one", "fifty", "eighty", "thirty-two", "sixty", "ninety"]
-    wordlist = ["musician"]
+    #wordlist = ["musician"]
+    wordlist = ['cashier', 'use a computer', 'take a class', 'too big', 'mail a letter', 'give medicine', 'baby', 'floor', 'pills', 'black', 'folder', 'phone number', 'father', 'notebook', 'hand', 'shower', 'orange', 'thin', 'socks', 'show me', 'ceiling', 'country', 'block', 'vomit', 'closed', 'high school', 'men’s restroom', 'newspaper', 'fan', 'factory worker', 'tub', 'bus stop', 'band aid', 'clinic', 'date of birth', 'motorcycle', 'signature', 'school crossing', 'women’s restroom', 'police station', 'state', 'marker', 'gray', 'sandals', 'shot', 'heavy', 'full time', 'laundromat', 'too long', 'arm', 'factory', 'dress', 'no music', 'get a book', 'ache', 'closet', 'clean the room', 'whiteboard', 'heart attack', 'get an x-ray', 'rash', 'sick', 'low', 'push', 'dining room', 'asprin', 'don’t walk', 'see a doctor', 'adults', 'too short', 'president', 'wash clothes', 'wall', 'brother', 'swimming suit', 'help wanted', 'umbrella', 'no food', 'count money', '911', 'office worker', 'social security number', 'chair', 'part time', 'fire truck', 'rug', 'buy food', 'sad', 'flag', 'ointment', 'mittens', 'middle school', 'no smoking', 'handicapped', 'up', 'fridge', 'school', 'dresser', 'passed out', 'cough syrup', 'elementary', 'extra large', 'interview', 'money order', 'grandpa', 'interpreter', 'handshake', 'drive the bus', 'fix cars', 'hall', 'post office', 'make a deposit', 'van', 'bra', 'bleeding', 'thief', 'husband', 'grow food', 'vote', 'pencil', 'insurance card', 'runny nose', 'grandma', 'preschool', 'TV', 'car', 'officer', 'teach a class', 'firefighter', 'capitol', 'sore throat']
     print(len(wordlist))
+    missing_words = []
     for word in wordlist:
         get_wiki(word)
-        """try:
+        try:
             convert_ogg_to_mp3(word + ".ogg", True)
         except:
             print("************\n Problem with " + word + "\n******************\n")
-"""
+            missing_words.append(word)
