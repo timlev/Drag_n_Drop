@@ -92,14 +92,6 @@ def get_sounds(json_dict):
                 downloaded_word = True
         except:
             print("Could't convert from wiki", word)
-        if downloaded_word == False:
-            try:
-                mp3path = download_wiktionary_word.download_gstatic(word, "./sounds/")
-                if mp3path in [0, 1, 2]:
-                    missing_words.append(word)
-            except:
-                print("Couldn't download from GStatic")
-    print(missing_words)
     missing_words = "\n".join(missing_words)
     return missing_words
 

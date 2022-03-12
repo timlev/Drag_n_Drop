@@ -1,14 +1,10 @@
 var lessonname = 'Parts_of_Speech/nouns_verbs';var lesson = {
-    "Person": [
-        "man",
-        "woman"
+    "nouns": [
+        "school",
+        "hospital"
     ],
-    " Place": [
-        " school",
-        " hospital"
-    ],
-    " Thing": [
-        " car",
-        " desk"
+    " verbs": [
+        " learn",
+        " heal"
     ]
 }

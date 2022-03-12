@@ -12,9 +12,11 @@ for grade in gradelevels:
 		write_html(write_json(filename, grab_csv(filename)))
 		missing_words = get_sounds(grab_csv(filename))
 		base_name = os.path.splitext(filename)[0]
-		print("filename", filename)
+		print(missing_words)
 		#create missing words file
-		with open("missing_words/" + base_name + "_missing_words.txt","wb") as wb:
+		if grade not in os.listdir("missing_words"):
+			os.mkdir(os.path.join("missing_words",grade))
+		with open(os.path.join("missing_words", grade, os.path.split(base_name)[1] + "_missing_words.txt"),"w") as wb:
 			wb.write(missing_words)
 		"""
 		# #Add to Index
