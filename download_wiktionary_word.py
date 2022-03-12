@@ -7,6 +7,10 @@ import platform
 import bs4
 
 def check_downloaded_word(word, directory="./"):
+    """Check if word is already in directory in any format.
+    Returns oggpath
+    Return 1 if you have trouble searching.
+    Return 2 if you can't download wiktionary page or ogg file."""
     soundfiles = os.listdir(directory)
     #strip extension
     downloaded_words = [os.path.splitext(x)[0] for x in soundfiles]
@@ -16,6 +20,7 @@ def check_downloaded_word(word, directory="./"):
         return False
 
 def get_wiki(word, directory="./"):
+    """Check if word is in directory and download word.ogg into directory"""
     if check_downloaded_word(word, directory):
         print(word + " already downloaded")
         return 0
@@ -32,7 +37,6 @@ def get_wiki(word, directory="./"):
     print("Processing response")
     index = bs4.BeautifulSoup(response,"html5lib")
     filenameguess = "File:en-us-" + word + ".ogg"
-    #print(index.find(title=filenameguess))
     #Jump to file wiktionary page
     query = base + filenameguess
     try:
@@ -63,57 +67,6 @@ def get_wiki(word, directory="./"):
         #print("Could not download:", word)
         return 2
 
-    # oggsource = ""
-    # for line in response:
-        # if "src" in line and "n-us" in line and ".ogg" in line:
-            # print(line)
-            # start = line.find("""src="//""") + len("""src="//""")
-            # end = line.find(".ogg") + len(".ogg")
-            # oggsource = line[start:end]
-            # oggsource = "https://" + oggsource
-            # print(oggsource)
-            # break
-    # print(query)
-    # print(oggsource)
-    # print("Downloading to:", os.path.join(directory, word + ".ogg"))
-    # try:
-        # print("Getting ogg...")
-        # getogg = urllib.urlopen(oggsource)
-        # print("Saving file ...")
-        # ofp = open(os.path.join(directory, word + ".ogg"),'wb')
-        # print("Writing file ...")
-        # ofp.write(getogg.read())
-        # ofp.close()
-        # return os.path.join(directory, word + ".ogg")
-    # except:
-        # #print("Could not download:", word)
-        # return 2
-
-#download wiktionary ogg file
-
-def download_gstatic(word, directory="./"):
-    if check_downloaded_word(word, directory):
-        return 0
-    base = "https://ssl.gstatic.com/dictionary/static/sounds/de/0/"
-    query = base + word + ".mp3"
-    print(query)
-    try:
-        response = urllib.urlopen(query)
-    except:
-        print("Couldn't find", word)
-        return 1
-    try:
-        print("Getting mp3...")
-        getmp3 = urllib.urlopen(query)
-        print("Saving file ...")
-        ofp = open(os.path.join(directory, word + ".mp3"),'wb')
-        print("Writing file ...")
-        ofp.write(getmp3.read())
-        ofp.close()
-        return os.path.join(directory, word + ".mp3")
-    except:
-        #print("Could not download:", word)
-        return 2
 
 #convert ogg to mp3
 
@@ -123,25 +76,20 @@ def convert_ogg_to_mp3(oggfile, remove_ogg = False):
     oggfile = os.path.basename(oggfile)
     mp3file = oggfile.replace(".ogg", ".mp3")
     mp3path = oggpath.replace(".ogg",".mp3")
-    os.system('ffmpeg -i "' + oggpath + '" -acodec libmp3lame "' + mp3path + '"')
-    if remove_ogg:
-        os.remove(oggpath)
-    return mp3path
+    if os.path.exists(oggpath):
+        os.system('ffmpeg -i "' + oggpath + '" -acodec libmp3lame "' + mp3path + '"')
+        if remove_ogg:
+            os.remove(oggpath)
+        return mp3path
+    else:
+        print("************\n Problem with " + word + "\n******************\n")
+    
 
 if __name__ == "__main__":
-    #if get_wiki("joyful") == 0:
-    #    convert_ogg_to_mp3("i'm" + ".ogg", True)
-    #print(download_gstatic("blowhole"))
-    #print(download_gstatic("myword"))
-    #wordlist = ["zero", "ten", "twenty", "one", "eleven", "twenty-one", "two", "twelve", "twenty-two", "three", "thirteen", "twenty-three", "four", "fourteen", "twenty-four", "five", "fifteen", "twenty-five", "six", "sixteen", "twenty-six", "seven", "seventeen", "twenty-seven", "eight", "eighteen", "twenty-eight", "nine", "nineteen", "twenty-nine", "thirty", "forty", "seventy", "thirty-one", "fifty", "eighty", "thirty-two", "sixty", "ninety"]
-    #wordlist = ["musician"]
-    wordlist = ['cashier', 'use a computer', 'take a class', 'too big', 'mail a letter', 'give medicine', 'baby', 'floor', 'pills', 'black', 'folder', 'phone number', 'father', 'notebook', 'hand', 'shower', 'orange', 'thin', 'socks', 'show me', 'ceiling', 'country', 'block', 'vomit', 'closed', 'high school', 'men’s restroom', 'newspaper', 'fan', 'factory worker', 'tub', 'bus stop', 'band aid', 'clinic', 'date of birth', 'motorcycle', 'signature', 'school crossing', 'women’s restroom', 'police station', 'state', 'marker', 'gray', 'sandals', 'shot', 'heavy', 'full time', 'laundromat', 'too long', 'arm', 'factory', 'dress', 'no music', 'get a book', 'ache', 'closet', 'clean the room', 'whiteboard', 'heart attack', 'get an x-ray', 'rash', 'sick', 'low', 'push', 'dining room', 'asprin', 'don’t walk', 'see a doctor', 'adults', 'too short', 'president', 'wash clothes', 'wall', 'brother', 'swimming suit', 'help wanted', 'umbrella', 'no food', 'count money', '911', 'office worker', 'social security number', 'chair', 'part time', 'fire truck', 'rug', 'buy food', 'sad', 'flag', 'ointment', 'mittens', 'middle school', 'no smoking', 'handicapped', 'up', 'fridge', 'school', 'dresser', 'passed out', 'cough syrup', 'elementary', 'extra large', 'interview', 'money order', 'grandpa', 'interpreter', 'handshake', 'drive the bus', 'fix cars', 'hall', 'post office', 'make a deposit', 'van', 'bra', 'bleeding', 'thief', 'husband', 'grow food', 'vote', 'pencil', 'insurance card', 'runny nose', 'grandma', 'preschool', 'TV', 'car', 'officer', 'teach a class', 'firefighter', 'capitol', 'sore throat']
+    wordlist = ["musician"]
     print(len(wordlist))
     missing_words = []
     for word in wordlist:
         get_wiki(word)
-        try:
-            convert_ogg_to_mp3(word + ".ogg", True)
-        except:
-            print("************\n Problem with " + word + "\n******************\n")
-            missing_words.append(word)
+        convert_ogg_to_mp3(word + ".ogg", True)
+    print("Missing Words: {}".format(missing_words))
