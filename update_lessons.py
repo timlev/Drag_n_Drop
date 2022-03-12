@@ -2,7 +2,7 @@ import os, bs4
 from makelessonjsonfromcsv import *
 
 #gradelevels = ['3rdGrade','4thGrade','5thGrade']
-gradelevels = ['Biome']
+gradelevels = ['Parts_of_Speech']
 #check for all new csv files
 for grade in gradelevels:
 	allcsvs = [x.replace(".csv","") for x in os.listdir(grade) if x.endswith(".csv")]
@@ -12,6 +12,7 @@ for grade in gradelevels:
 		write_html(write_json(filename, grab_csv(filename)))
 		missing_words = get_sounds(grab_csv(filename))
 		base_name = os.path.splitext(filename)[0]
+		print("filename", filename)
 		#create missing words file
 		with open("missing_words/" + base_name + "_missing_words.txt","wb") as wb:
 			wb.write(missing_words)
