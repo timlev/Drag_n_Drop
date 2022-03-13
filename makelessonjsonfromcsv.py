@@ -76,6 +76,7 @@ def download_sound_files(master_word_list):
                 print("Couldn't download from GStatic")
                 
 def get_sounds(json_dict):
+    sys.path.insert(0, "download_wiktionary_word")
     import download_wiktionary_word
     print("Downloading sound files ...")
     soundfiles = [f.replace(".mp3","") for f in os.listdir("./sounds/") if f.endswith(".mp3")]
