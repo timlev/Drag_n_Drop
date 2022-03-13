@@ -13,11 +13,11 @@ for grade in gradelevels:
 		missing_words = get_sounds(grab_csv(filename))
 		base_name = os.path.splitext(filename)[0]
 		print(missing_words)
-		#create missing words file
+		#create missing words file and folder
 		if grade not in os.listdir("missing_words"):
 			os.mkdir(os.path.join("missing_words",grade))
 		with open(os.path.join("missing_words", grade, os.path.split(base_name)[1] + "_missing_words.txt"),"w") as wb:
-			wb.write(missing_words)
+			wb.write("\n".join(missing_words))
 		"""
 		# #Add to Index
 		folder, lesson = os.path.split(filename)

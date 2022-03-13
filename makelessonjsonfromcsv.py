@@ -87,12 +87,14 @@ def get_sounds(json_dict):
         downloaded_word = False
         try:
             oggpath = download_wiktionary_word.get_wiki(word, "./sounds/")
-            if oggpath != 2:
+            if oggpath not in [1,2]:
                 download_wiktionary_word.convert_ogg_to_mp3(oggpath, True)
                 downloaded_word = True
+            else:
+                missing_words.append(word)
         except:
             print("Could't convert from wiki", word)
-    missing_words = "\n".join(missing_words)
+    print(missing_words)
     return missing_words
 
 
