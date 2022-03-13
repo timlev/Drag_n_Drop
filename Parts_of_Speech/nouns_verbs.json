@@ -3,8 +3,8 @@ var lessonname = 'Parts_of_Speech/nouns_verbs';var lesson = {
         "school",
         "hospital"
     ],
-    " verbs": [
-        " learn",
-        " heal"
+    "verbs": [
+        "learn",
+        "heal"
     ]
 }
